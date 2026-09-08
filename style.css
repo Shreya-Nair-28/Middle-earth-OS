@@ -125,7 +125,8 @@ textarea{
     height:150px;
     padding:10px;
     resize:none;
-    font-family:Arial,sans-serif;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+
 }
 
 .notes-button{
@@ -153,7 +154,7 @@ textarea{
     height:120px;
     padding:10px;
     resize:none;
-    font-family:Arial,sans-serif;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 .notes-buttons{
     margin-top:10px;

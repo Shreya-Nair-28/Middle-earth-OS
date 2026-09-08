@@ -2,7 +2,7 @@
 
 A simple web-based operating system inspired by the world of Middle-earth.
 
-![Middle-earth OS](images/demo.jpg)
+![Middle-earth OS](images/demo.png)
 
 ## ✨ About
 

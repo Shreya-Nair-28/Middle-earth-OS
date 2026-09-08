@@ -2,10 +2,8 @@
     box-sizing:border-box;
 }
 
-body{
-    margin:0;
-    font-family:Arial, sans serif;
-
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 .desktop {

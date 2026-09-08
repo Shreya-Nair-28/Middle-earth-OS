@@ -6,61 +6,19 @@ A simple web-based operating system inspired by the world of Middle-earth.
 
 ##  About
 
-Middle-earth OS is a browser-based desktop environment built using **HTML, CSS, and JavaScript**.
+Middle-earth OS is a browser based operating system inspired by the world of the Lord of the Rings. I built it with HTML, CSS and JS (I became pretty confident with these 3 after completing the personal site mission)
+Ship #1 focused on fulfilling the basic requirements. It has draggable and resizable windows, a taskbar, time display at the bottom. Also has 3 simple apps: Notes, Timer and Gallery.
+So far, it’s super basic. I’m developing this in multiple ships adding smth new each time. You can already see I have two other apps in the working(Map and Palantir). I will definitely make it more polished visually and technically. (Ship #2 will have more lotr themed apps and more unique features (ive already thought of a few amazing ones)). The goal is to turn this simple OS into a fully immersive one.
 
-This is **Ship 1**, focused on creating a functional OS with useful everyday tools and draggable, resizable windows.
+# Features
 
-##  Features
-
-* Custom Middle-earth themed desktop
-* Multiple draggable windows
-* Resizable windows
-* Notes app
-
-  * Create notes
-  * Save notes
-  * View saved notes
-  * Delete notes
-  * Clear saved notes
-* 📷 Gallery
-
-  * View images
-  * Previous/Next navigation
-* Focus Timer
-
-  * Custom minutes and seconds
-  * Start, pause, and reset
-*  Live time display
-* Taskbar for opening apps
-* Notes are saved locally in the browser
-
-## 🛠️ Built With
-
-* HTML
-* CSS
-* JavaScript
-
-No frameworks or passwords are required.
-
-
-##  Ship 1
-
-Ship 1 focuses on the basic OS experience and completing the core project requirements.
-
-### Current Apps
-
-* 📜 Notes
-* 📷 Gallery
-* ⏰ Timer
-
-### NFeature
-
-**Window resizing** — users can resize windows by dragging the bottom-right corner.
-**Window dragging** — users can drag and move windows.
+Currently has 3 functioning apps: Notes (with delete, clear and view saved functions), Timer(the user can select the number of minutes and seconds) and Gallery (has a few images you can click through)
+In the working: Maps (an interactive map of Middle-earth) and Palantir (inspired by the crystal ball from the movie, I plan on making it show the weather or smth unique, currently working on the crystal ball's design part)
+Its windows are draggable and resizable as well. Clicking on one window brings it to the front. I plan to make it better by adding minimise and full screen options too.
 
 ## Ship 2
 
-Future versions will definitely have more advanced Middle-earth-themed features and applications. You can see that apps like Map and Palantir are in development.  They will be added very soon.
+Future version will definitely have more advanced Middle-earth-themed features and apps. You can see that apps like Map and Palantir are in development.  They will be added and make working by the next ship.
 
 
 

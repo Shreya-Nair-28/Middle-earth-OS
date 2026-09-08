@@ -4,7 +4,7 @@ A simple web-based operating system inspired by the world of Middle-earth.
 
 ![Middle-earth OS](images/demo.png)
 
-## ✨ About
+##  About
 
 Middle-earth OS is a browser-based desktop environment built using **HTML, CSS, and JavaScript**.
 
@@ -58,7 +58,7 @@ Ship 1 focuses on the basic OS experience and completing the core project requir
 **Window resizing** — users can resize windows by dragging the bottom-right corner.
 **Window dragging** — users can drag and move windows.
 
-## 🔮 Ship 2
+## Ship 2
 
 Future versions will definitely have more advanced Middle-earth-themed features and applications. You can see that apps like Map and Palantir are in development.  They will be added very soon.
 

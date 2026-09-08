@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Middle-earth OS </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="desktop">
+            <h1>Middle-earth OS </h1>
+            <p class="subtitle">Welcome, traveller</p>
+            <div class="icons">
+                <div class="icon" onclick="openWindow('notesWindow')">
+                    <div>📜</div>
+                    <span> notes </span>
+                </div>
+                <div class="icon" onclick="openWindow('galleryWindow')">
+                    <div>📷</div>
+                    <span>Gallery</span>
+                </div>
+                <div class="icon" onclick="openWindow('timerWindow')">
+                    <div>⏰</div>
+                    <span> Focus timer </span>
+                </div>
+                <div class="icon" onclick="openWindow('mapWindow')">
+                    <div>🗺️</div>
+                    <span> Map </span>
+                </div>
+                <div class="icon" onclick="openWindow('oracleWindow')">
+                    <div>🔮</div>
+                    <span> Palantir </span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="window" id="notesWindow">
+            <div class="window-bar">
+                <span>📜notes</span>
+                <button onclick="closeWindow('notesWindow')">❌</button>
+            </div>
+            <div class="window-content">
+                <h2>Middle-earth notes</h2>
+                <input id="noteTitle" type="text" placeholder="Note title">
+                <textarea id="notes" placeholder="write your notes here"></textarea>
+                <div class="notes-buttons">
+                    <button onclick="saveNotes()">Save</button>
+                    <button onclick="clearNotes()">Clear</button>
+                    <button onclick="viewNotes()">View Saved Notes </button>
+                </div>
+                <div id="savedNotes"></div>
+                <p id="savedMessage"></p>
+            </div>
+        </div>
+
+        <div class="window" id="mapWindow">
+            <div class="window-bar">
+                <span>🗺️Map</span>
+                <button onclick="closeWindow('mapWindow')">❌</button>
+            </div>
+            <div class="window-content">
+                <h2> Map of Middle Earth </h2>
+                <p>New feature on its way! </p>
+            </div>
+        </div>
+
+
+        <div class="window" id="oracleWindow">
+            <div class="window-bar">
+                <span>🔮Oracle</span>
+                <button onclick="closeWindow('oracleWindow')">❌</button>
+            </div>
+            <div class="window-content">
+                <h2>The Oracle</h2>
+                <p>The crystal is waiting...</p>
+            </div>
+        </div>
+
+        <div class="window" id="timerWindow">
+            <div class="window-bar">
+                <span>⏰</span>
+                <button onclick="closeWindow('timerWindow')">❌</button>
+            </div>
+            <div class="window-content timer-content">
+                <h2>Focus Timer</h2>
+                <div id="timerDisplay">5:00</div>
+                <div class="timer-inputs">
+                    <input id="timerMinutes" type="number" min="0" placeholder="Minutes">
+                    <input id="timerSeconds" type="number" min="0" max="59" placeholder="Seconds">
+                </div>
+                <div class="timer-buttons">
+                    <button onclick="startTimer()">Start</button>
+                    <button onclick="pauseTimer()">Pause</button>
+                    <button onclick="resetTimer()">Reset</button>
+                </div>
+                <p id="timerMessage"></p>
+            </div>
+        
+        </div>
+
+        <div class="window" id="galleryWindow">
+            <div class="window-bar">
+                <span>📷 Gallery </span>
+                <button onclick="closeWindow('galleryWindow')">❌</button>
+
+            </div>
+            <div class="window-content">
+                <h2> Gallery </h2>
+                <img id="galleryImage" src="images/photo1.jpg" alt="Gallery image">
+                <div class="gallery-buttons">
+                    <button onclick="previousImage()">⬅️Previous</button>
+                    <button onclick="nextImage()">➡️Next</button>
+                </div>
+                <p id="galleryCounter">1 / 4 </p>
+            </div>
+        </div>
+        <div class="taskbar">
+            <span class="start"> Middle-earth OS </span>
+            <div class="taskbar-apps">
+                <button onclick="openWindow('notesWindow')">📜</button>
+                <button onclick="openWindow('galleryWindow')"> 📷</button>
+                <button onclick="openWindow('oracleWindow')">🔮</button>
+                <button onclick="openWindow('mapWindow')">🗺️</button>
+                <button onclick="openWindow('timerWindow')">⏰</button>
+            </div>
+            
+            <span id="timer"></span>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

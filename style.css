@@ -1,0 +1,259 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans serif;
+
+}
+
+.desktop {
+    height: 100vh;
+    padding: 30px;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+h1{
+    margin:0;
+}
+
+.subtitle{
+    opacity:0.7;
+}
+
+.icons{
+    display:flex;
+    gap:30px;
+    margin-top:50px;
+}
+
+.icon{
+    text-align:center;
+    cursor:pointer;
+}
+
+.icon div{
+    font-size:40px;
+}
+
+.icon span{
+    display:block;
+    margin-top:5px;
+}
+
+.taskbar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:45px;
+    padding:8px 15px;
+    background:#0c120e;
+    color:white;
+    display:flex;
+    align-items:center;
+
+}
+
+.start{
+    margin-right:25px;
+}
+.taskbar-apps{
+    display:flex;
+    gap:5px;
+}
+.taskbar button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    padding:3px 8px;
+}
+.taskbar button:hover{
+    background:#26382b;
+}
+
+#timer{
+    margin-left:auto;
+}
+
+.window{
+    position:absolute;
+    top:150px;
+    left:300px;
+    width:400px;
+    background:#d4fcd7;
+    color:#222;
+    border:2px solid #333;
+    display:none;
+    z-index: 1;
+
+    
+}
+.window {
+    resize: both;
+    overflow: auto;
+}
+
+.window-bar{
+    background:#26382b;
+    color:white;
+    padding:8px;
+    display:flex;
+    justify-content:space-between;
+    cursor:move;
+}
+
+.window-bar button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.window-content{
+    padding:20px;
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:10px;
+    resize:none;
+    font-family:Arial,sans-serif;
+}
+
+.notes-button{
+    margin-top:10px;
+}
+
+.notes-buttons button{
+    padding:6px 12px;
+    margin-right:5px;
+    cursor:pointer;
+}
+
+#savedMessage{
+    font-size:14px;
+}
+
+#noteTitle{
+    width:100%;
+    padding:8px;
+    margin-bottom:8px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:10px;
+    resize:none;
+    font-family:Arial,sans-serif;
+}
+.notes-buttons{
+    margin-top:10px;
+}
+.notes-buttons button{
+    margin-right:5px;
+    padding:6px 12px;
+    cursor:pointer;
+}
+#savedNotes{
+    margin-top:15px;
+}
+.note{
+    background:#e6dfcf;
+    padding:10px;
+    margin-bottom:8px;
+}
+.note h4{
+    margin:0 0 5px;
+}
+.note button{
+    cursor:pointer;
+}
+
+.timer-content{
+    text-align:center;
+}
+
+#timerDisplay{
+    font-size:48px;
+    font-weight:bold;
+    margin:20px;
+    font-family:monospace;
+}
+
+.timer-inputs{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+}
+
+.timer-inputs input{
+    width:100px;
+    padding:8px;
+}
+.timer-buttons{
+    margin-top:15px;
+}
+
+.timer-buttons button{
+    padding:7px 12px;
+    margin:3px;
+    cursor:pointer;
+}
+
+#timerMessage{
+    min-height:20px;
+}
+
+.gallery-content {
+    text-align: center;
+}
+
+#galleryImage {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
+}
+
+.gallery-buttons {
+    margin-top: 15px;
+}
+
+.gallery-buttons button {
+    padding: 8px 12px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+#galleryCounter {
+    font-size: 14px;
+}
+.window {
+    position: absolute;
+    resize: both;
+    overflow: auto;
+    min-width: 250px;
+    min-height: 150px;
+}
+
+.window::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+    cursor: nwse-resize;
+}

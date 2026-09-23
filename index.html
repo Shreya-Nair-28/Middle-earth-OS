@@ -3,44 +3,195 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Middle-earth OS </title>
+        <title> Strider OS </title>
+        <link rel="icon" type="images/png" href="images/favicon.png">
         <link rel="stylesheet" href="style.css">
     </head>
-
+    <script type="module">
+    
+</script>
     <body>
-        <div class="desktop">
-            <h1>Middle-earth OS </h1>
-            <p class="subtitle">Welcome, traveller</p>
-            <div class="icons">
-                <div class="icon" onclick="openWindow('notesWindow')">
-                    <div>📜</div>
-                    <span> notes </span>
-                </div>
-                <div class="icon" onclick="openWindow('galleryWindow')">
-                    <div>📷</div>
-                    <span>Gallery</span>
-                </div>
-                <div class="icon" onclick="openWindow('timerWindow')">
-                    <div>⏰</div>
-                    <span> Timer </span>
-                </div>
-                <div class="icon" onclick="openWindow('mapWindow')">
-                    <div>🗺️</div>
-                    <span> Map </span>
-                </div>
-                <div class="icon" onclick="openWindow('oracleWindow')">
-                    <div>🔮</div>
-                    <span> Palantir </span>
-                </div>
 
+    <div id="introcover">
+        <div class="introwarning">
+            <h2>Hellllllloooooo</h2>
+            <p>Welcome to Strider OS. Please adjust your volume (the intro might be a little loud) or else please feel free to skip the intro. Thank you!!! </p>
+            
+        
+        <div class="intro-buttons">
+            <button id="startIntro">Continue</button>
+            <button id="skipIntro">Skip Intro</button>
+        </div>
+        </div>
+        <video id="introVideo" preload="auto">
+            <source src="videos/intro.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="desktop">
+
+        <div class="desktop-header">
+            <div>
+                <h1>Strider OS</h1>
+                <p class="subtitle">Welcome, traveller</p>
             </div>
         </div>
+        <div class="mode-toggle">
+            <span id="modeLabel">☀️ Light Mode</span>
+            <button id="darkModeToggle" onclick="darkmode()">
+                <span class="toggle-knob"></span>
+            </button>
+        </div>
+
+        <div class="icons">
+            <div class="icon" onclick="openWindow('introWindow')">
+                <img src="images/intrologo.png">
+                <span>Introduction  </span>
+            </div>
+            <div class="icon" onclick="openWindow('notesWindow')">
+                <img src="images/noteslogo.png"> 
+                <span> notes</span>
+            </div>
+
+            <div class="icon" onclick="openWindow('galleryWindow')">
+                <img src="images/gallerylogo.png">
+                <span>Gallery</span>
+            </div>
+
+            <div class="icon" onclick="openWindow('timerWindow')">
+                <img src="images/timerlogo.png">
+                <span>Timer</span>
+            </div>
+
+            <div class="icon" onclick="openWindow('mapWindow')">
+                <img src="images/maplogo.png">
+                <span>Map</span>
+            </div>
+
+            <div class="icon" onclick="openWindow('oracleWindow')">
+                <img src="images/weatherlogo.png">
+                <span>Palantir</span>
+            </div>
+
+            <div class="icon" onclick="openWindow('settingsWindow')">
+                <img src="images/settingslogo.png">
+                <span>Settings</span>
+            </div>
+            <div class="icon" onclick="openWindow('calendarWindow')">
+                <img src="images/calendarlogo.png">
+                <span>Calendar</span>
+            </div>
+            <div class="icon" onclick="openWindow('doodleWindow')">
+                <img src="images/doodlelogo.png">
+                <span>Doodle</span>
+            </div>
+            <div class="icon" onclick="openWindow('libraryWindow')">
+                <img src="images/liblogo.png">
+                <span>Library</span>
+            </div>
+        </div>
+        <!--All them easter egggssss-->
+        <div class="ring" onclick="showRing()">
+            <img src="images/ring.png" alt="The One Ring">
+            <img src="images/ring.gif" class="ring-gif" id="ringGif" alt="">
+        </div>
+        <div class="treasure" id="treasure" onclick="opentreasure()">
+            <img src="images/treasure.png" id="treasureImage" alt="Treasure">
+        </div>
+        <div class="legolas">
+            <img src="images/legolas.png">
+        </div>
+        <div class="dragon">
+            <img src="images/dragon.gif" alt="dragon">
+        </div>
+        <div class="plant" onclick="growPlant()">
+            <img src="images/plant.png" id="plantImage" alt="plant">
+        </div>
+        <div class="lily" onclick="growLily()">
+            <img src="images/lily.png" id="lilyImage" alt="lily">
+        </div>
+        <div class="flower" onclick="growFlower()">
+            <img src="images/flower.png" id="flowerImage" alt="flower">
+        </div>
+        <div class="butterfly" id="butterfly" onclick="flyButterfly()">
+            <img src="images/butterfly.png" id="butterflyImage" alt="Butterfly">
+        </div>
+        <div class="moth" id="moth" onclick="flyMoth()">
+            <img src="images/moth.png" id="mothImage" alt="Moth">
+        </div>
+        <div id="gollum" onclick="hideGollum()">
+            <img src="images/gollum.png" alt="Gollum">
+        </div>
+        <div id="star"></div>
+
+<div class="desktop-widgets">
+    <div class="desktop-widget clock-widget" id="clockWidget">
+        <div class="analogue-clock">
+            <img src="images/clock.png" alt="Middle-earth clock">
+            <div class="clock-hand hour-hand" id="hourHand"></div>
+            <div class="clock-hand minute-hand" id="minuteHand"></div>
+            <div class="clock-center"></div>
+        </div>
+
+    </div>
+    <div class="desktop-widget weather-widget" id="weatherWidget">
+        <div class="mini-palantir">
+            <img src="images/palantir.png" alt="Palantír weather">
+            <div id="desktopWeather">☁️</div>
+        </div>
+    </div>
 
 
+    <div class="desktop-widget events-widget" id="eventsWidget">
+        <div class="events-parchment">
+            <img src="images/parchment.png" alt="Parchment">
+            <div class="events-content">
+                <h3>Upcoming Events</h3>
+                <div id="desktopEventsList">
+                    <p>No upcoming events</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="window" id="introWindow">
+            <div class="window-bar">
+                <span> Welcome to Strider OS</span>
+                <div class="window-controls">
+                    <button onclick="closeWindow('introWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
+            </div>
+
+            <div class="window-content intro-content">
+                <img src="images/intro.png" alt="Welcome to Middle Earth">
+                <h2> Welcome traveller</h2>
+                <p>I hope you enjoy using it as much as I loved making it \^o^/ </p>
+                <button onclick="closeWindow('introWindow')">
+                    Enter Middle-earth
+                </button>
+            </div>
+
+
+        </div>
+
+            
         <div class="window" id="notesWindow">
             <div class="window-bar">
-                <span>📜notes</span>
-                <button onclick="closeWindow('notesWindow')">❌</button>
+                <span>Notes</span>
+                <div class="window-controls">
+                    <button onclick="minimizeWindow('notesWindow')"title="Minimize">
+                        -
+                    </button>
+                    <button onclick="maximizeWindow('notesWindow')" title="Maximize">
+                        ⛶
+                    </button>
+                    <button onclick="closeWindow('notesWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
             </div>
             <div class="window-content">
                 <h2>Middle-earth notes</h2>
@@ -55,38 +206,83 @@
                 <p id="savedMessage"></p>
             </div>
         </div>
-
         <div class="window" id="mapWindow">
             <div class="window-bar">
-                <span>🗺️Map</span>
-                <button onclick="closeWindow('mapWindow')">❌</button>
+                <span>Map</span>
+                <div class="window-controls">
+                    <button onclick="minimizeWindow('mapWindow')" title="Minimize">
+                        -
+                    </button>
+                    <button onclick="maximizeWindow('mapWindow')"title="Maximize">
+                        ⛶
+                    </button>
+                    <button onclick="closeWindow('mapWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
             </div>
             <div class="window-content">
-                <h2> Map of Middle Earth </h2>
-                <p>New feature on its way! </p>
+                <div class="maplayout">
+                <div class="middle-earth-map">
+                    <img src="images/map.png" alt="Map of Middle-earth">
+                    <button class="map-marker shire-marker" onclick="showMapLocation('shire')">📍</button>
+                    <button class="map-marker rivendell-marker" onclick="showMapLocation('rivendell')">📍</button>
+                    <button class="map-marker moria-marker" onclick="showMapLocation('moria')">📍</button>
+                    <button class="map-marker minastirith-marker" onclick="showMapLocation('minastirith')">📍</button>
+                    <button class="map-marker rohan-marker" onclick="showMapLocation('rohan')">📍</button>
+                    <button class="map-marker gondor-marker" onclick="showMapLocation('gondor')">📍</button>
+                    <button class="map-marker mordor-marker" onclick="showMapLocation('mordor')">📍</button>
+                    <button class="map-marker isengard-marker" onclick="showMapLocation('isengard')">📍</button>
+                </div>
+                    <div class="sidebar" id="mapInfo">
+                        <h3> Map of Middle Earth </h3>
+                        <p>Choose a location and know more about it! </p>
+                    </div>
+                </div>
             </div>
         </div>
+      <div class="palantir-app" id="oracleWindow" onmousedown="startPalantirDrag(event)">
 
-
-        <div class="window" id="oracleWindow">
-            <div class="window-bar">
-                <span>🔮Oracle</span>
-                <button onclick="closeWindow('oracleWindow')">❌</button>
-            </div>
-            <div class="window-content">
-                <h2>The Oracle</h2>
-                <p>The crystal is waiting...</p>
-            </div>
+    <button class="palantir-close" onclick="closeWindow('oracleWindow')">
+        <img src="images/close.png" alt="Close">
+    </button>
+    
+        <div class="crystal-ball">
+        <img class="palantir-image" src="images/palantir.png" alt="Palantir">
+        <img class="palantir-smoke" id="palantirSmoke" alt="">
+        <div class="weather-inside" id="weatherInside">
+            <span class="weather-location"></span>
+            <span class="weather-status"></span>
+            <span class="weather-temperature"></span>
         </div>
+    </div>
 
+    <div class="palantir-controls">
+        <input id="weatherLocation" type="text" placeholder="Enter a city">
+        <button onclick="showWeather()">Reveal</button>
+    </div>
+
+    <p id="weatherMessage">The Palantír sees......</p>
+
+    </div>
         <div class="window" id="timerWindow">
             <div class="window-bar">
-                <span>⏰</span>
-                <button onclick="closeWindow('timerWindow')">❌</button>
+                <span>Timer</span>
+                <div class="window-controls">
+                    <button onclick="minimizeWindow('timerWindow')" title="Minimize">
+                        -
+                    </button>
+                    <button onclick="maximizeWindow('timerWindow')"title="Maximize">
+                        ⛶
+                    </button>
+                    <button onclick="closeWindow('timerWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
             </div>
             <div class="window-content timer-content">
-                <h2> Timer</h2>
-                <div id="timerDisplay">5:00</div>
+                <h2>Timer</h2>
+                <div id="timer">5:00</div>
                 <div class="timer-inputs">
                     <input id="timerMinutes" type="number" min="0" placeholder="Minutes">
                     <input id="timerSeconds" type="number" min="0" max="59" placeholder="Seconds">
@@ -98,14 +294,87 @@
                 </div>
                 <p id="timerMessage"></p>
             </div>
-        
+        </div>
+        <div class="window" id="libraryWindow">
+            <div class="window-bar">
+                <span>Library</span>
+                <div class="window-controls">
+                    <button onclick="minimizeWindow('libraryWindow')"title="Minimize">
+                        -
+                    </button>
+                    <button onclick="maximizeWindow('libraryWindow')" title="Maximize">
+                        ⛶
+                    </button>
+
+                    <button onclick="closeWindow('libraryWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
+            </div>
+            <div class="window-content library-content">
+                <h2>Middle-earth library</h2>
+                <div class="library-books">
+                    <button class="book" onclick="openBook('hobbit')">
+                        <span> The Hobbit </span>
+                    </button>
+                    <button class="book"onclick="openBook('lotr')">
+                        <span>The Lord of the Rings</span>
+                    </button>
+                    <button class="book" onclick="openBook('silmarillion')">
+                        <span> The Silmarillion</span>
+                    </button>
+                    <button class="book" onclick="openBook('unfinished')">
+                        <span> Unfinished Tales</span>
+                    </button>
+                </div>
+            </div>
+            <div class="window" id="readerWindow">
+                <div class="window-bar">
+                    <span id="readerTitle">📖Book Reader</span>
+                    <div class="window-controls">
+                        <button onclick="minimizeWindow('readerWindow')"title="Minimize">
+                            -
+                        </button>
+                        <button onclick="maximizeWindow('readerWindow')"title="Maximize">
+                            ⛶
+                        </button>
+                        <button onclick="closeWindow('readerWindow')">
+                            <img src="images/close.png" alt="Close">
+                        </button>
+                    </div>
+                </div>
+                <div class="window-content reader-content">
+                    <h2 id="readerHeading">Book</h2>
+                    <p id="readerText">Select a book from the library.</p>
+                    <button id="excerptButton" onclick="openExcerpt()">
+                        📖Read an Excerpt
+                    </button>
+                    <iframe
+                    id="excerptViewer"
+                    src=""
+                    title="Book excerpt"
+                    style="display:none;width:100%;height:350px;border:2px solid #8b6f3d;">
+
+                    </iframe>
+                    <canvas id="pdfCanvas" style="display:none;"></canvas>
+                </div>
+            </div>
         </div>
 
         <div class="window" id="galleryWindow">
             <div class="window-bar">
                 <span>📷 Gallery </span>
-                <button onclick="closeWindow('galleryWindow')">❌</button>
-
+                <div class="window-controls">
+                    <button onclick="minimizeWindow('galleryWindow')" title="Minimize">
+                        -
+                    </button>
+                    <button onclick="maximizeWindow('galleryWindow')"title="Maximize">
+                        ⛶
+                    </button>
+                    <button onclick="closeWindow('galleryWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
             </div>
             <div class="window-content">
                 <h2> Gallery </h2>
@@ -117,18 +386,240 @@
                 <p id="galleryCounter">1 / 4 </p>
             </div>
         </div>
-        <div class="taskbar">
-            <span class="start"> Middle-earth OS </span>
-            <div class="taskbar-apps">
-                <button onclick="openWindow('notesWindow')">📜</button>
-                <button onclick="openWindow('galleryWindow')"> 📷</button>
-                <button onclick="openWindow('oracleWindow')">🔮</button>
-                <button onclick="openWindow('mapWindow')">🗺️</button>
-                <button onclick="openWindow('timerWindow')">⏰</button>
+    <div class="window" id="calendarWindow">
+        <div class="window-bar">
+            <span>📆 Calendar</span>
+            <div class="window-controls">
+                <button onclick="minimizeWindow('calendarWindow')" title="Minimize">
+                    -
+                </button>
+                <button onclick="maximizeWindow('calendarWindow')"title="Maximize">
+                    ⛶
+                </button>
+                <button onclick="closeWindow('calendarWindow')">
+                    <img src="images/close.png" alt="Close">
+             </button>
             </div>
-            
-            <span id="timer"></span>
         </div>
+ 
+    <div class="window-content calendar-content">
+        <div class="calendar-header">
+            <button onclick="previousMonth()">◀</button>
+            <h2 id="calendarMonth">Month Year</h2>
+            <button onclick="nextMonth()">▶</button>
+        </div>
+
+        <button class="today-button" onclick="goToToday()">Today</button>
+
+        <div class="calendar-weekdays">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <p id="selectedDate">Select a day</p>
+        <div class="calendar-events">
+
+    <div id="calendarEventDisplay">
+        <h3>Events</h3>
+        <p>Select a day to check what's there that day ot add an event for that day </p>
+    </div>
+
+    <div class="add-calendar-event">
+        <h3>＋ Add Event</h3>
+
+        <p id="eventSelectedDate">Select a date first</p>
+
+        <input
+            type="text"
+            id="eventTitle"
+            placeholder="Event name"
+        >
+
+        <input
+            type="text"
+            id="eventDescription"
+            placeholder="Description (optional)"
+        >
+
+        <button onclick="addCalendarEvent()">Add Event</button>
+
+        <button
+            onclick="toggleManualEventDate()"
+            id="manualDateButton"
+        >
+            ＋ Choose another date
+        </button>
+
+        <div id="manualEventDate" style="display:none;">
+            <input type="date" id="eventDate">
+        </div>
+
+        <p id="eventMessage"></p>
+    </div>
+
+</div>
+</div>
+</div>
+
+<div class="window" id="doodleWindow">
+        <div class="window-bar">
+            <span>Doodle</span>
+            <div class="window-controls">
+                <button onclick="minimizeWindow('doodleWindow')" title="Minimize">
+                    -
+                </button>
+                <button onclick="maximizeWindow('doodleWindow')" title="Maximize">
+                    ⛶
+                </button>
+                <button onclick="closeWindow('doodleWindow')">
+                    <img src="images/close.png" alt="Close">
+                </button>
+            </div>
+        </div>
+
+        <div class="window-content doodle-content">
+            <div class="doodle-toolbar">
+                <button onclick="clearDoodle()">🗑️Clear</button>
+                <label>
+                    Ink
+                    <input id="doodleColor" type="color" value="#2b2418">
+                </label>
+                <label>
+                    Size
+                    <input id="doodleSize" type="range" min="1" max="20" value="4">
+                </label>
+                <button onclick="eraser()" id="eraserButton">
+                    🧽 Eraser
+                </button>
+            </div>
+            <canvas id="doodleCanvas"></canvas>
+        </div>
+    </div>
+</div>
+
+
+        <div class="taskbar">
+            <span class="start"> Strider OS </span>
+            <div class="taskbar-apps">
+                <button id="task-notes" onclick="openWindow('notesWindow')">
+                    <img src="images/noteslogo.png">
+                </button>
+                <button id="task-gallery" onclick="openWindow('galleryWindow')">
+                    <img src="images/gallerylogo.png">
+                </button>
+                <button id="task-oracle" onclick="openWindow('oracleWindow')">
+                    <img src="images/weatherlogo.png">
+                </button>
+                <button id="task-map" onclick="openWindow('mapWindow')">
+                    <img src="images/maplogo.png">
+                </button>
+                <button id="task-timer" onclick="openWindow('timerWindow')">
+                    <img src="images/timerlogo.png">
+                </button>
+                <button id="task-calendar" onclick="openWindow('calendarWindow')">
+                    <img src="images/calendarlogo.png">
+                </button>
+                <button id="task-doodle" onclick="openWindow('doodleWindow')">
+                    <img src="images/doodlelogo.png">
+                </button>
+                <button id="task-settings" onclick="openWindow('settingsWindow')">
+                    <img src="images/settingslogo.png">
+                </button>
+            </div>
+            <div class="inscription">
+            <img src="images/inscription.png" alt="inscription">
+            </div>
+        
+            <span id="taskbarTime"></span>
+        
+        </div>
+        <div class="window" id="settingsWindow">
+    <div class="window-bar">
+        <span>⚙️ Settings</span>
+        <div class="window-controls">
+            <button onclick="minimizeWindow('settingsWindow')" title="Mainimize">
+                -
+            </button>
+            <button onclick="maximizeWindow('settingsWindow')" title="Maximize">
+                ⛶
+            </button>
+            <button onclick="closeWindow('settingsWindow')">
+                <img src="images/close.png" alt="Close">
+            </button>
+        </div>
+    </div>
+
+    <div class="window-content settings-content">
+        <h2>Settings</h2>
+
+        <div class="setting-row">
+
+            <div class="setting-option">
+                <strong>Dark Mode</strong>
+                <p>Switch between the atmosphere of the Shire and Mordor</p>
+
+                <button id="settingsDarkMode" onclick="darkmode()">
+                    🌙 Dark Mode
+                </button>
+            </div>
+
+
+            <div class="setting-option">
+                <strong>Wallpaper</strong>
+                <p>Click through and choose the perfect background image for your desktop</p>
+
+                <div class="wallpaper-picker">
+                    <button onclick="previousWallpaper()">◀️</button>
+
+                    <div class="wallpaper-preview" onclick="chooseCurrentWallpaper()">
+                        <img id="wallpaperThumbnail"
+                             src="images/background.jpg"
+                             alt="Wallpaper preview">
+                        <span id="wallpaperName">Wallpaper1</span>
+                    </div>
+
+                    <button onclick="nextWallpaper()">▶️</button>
+                </div>
+
+            </div>
+            <div class="setting-option">
+                <strong>Widgets</strong>
+                <p>Choose a nice widget for your desktop</p>
+                <div class="widget-options">
+                    <label>
+                        <input type="checkbox" id="clockWidgetToggle" checked>
+                        🕛Clock
+                    </label>
+                    <label>
+                        <input type="checkbox" id="weatherWidgetToggle" checked>
+                        🌞Weather
+                    </label>
+                    <label>
+                        <input type="checkbox" id="eventsWidgetToggle" checked>
+                        📆Calendar Events
+                    </label>
+                </div>
+            </div>
+
+            <div class="setting-option">
+                <strong>Background Music </strong>
+                <p>Choose to mute or unmute the background music </p>
+                <label>
+                    <input type="checkbox" id="musicmute">
+                    Mute Background Music
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+        <audio id="backgroundMusic"loop></audio>
         <script src="script.js"></script>
+
     </body>
 </html>

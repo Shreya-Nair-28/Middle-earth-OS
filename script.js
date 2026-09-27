@@ -102,21 +102,49 @@ function chooseWallpaper(type){
     }
 }
 
+let memoryData=JSON.parse(localStorage.getItem("memory"))||{
+    apps:[], secrets:[]
+};
+function saveMemory(){
+    localStorage.setItem("memory",JSON.stringify(memoryData));
 
+}
+const appsList=["notesWindow","galleryWindow","timerWindow","mapWindow","oracleWindow","calendarWindow","doodleWindow","libraryWindow","settingsWindow","introWindow"];
+function rmbApp(appName){
+    if(appsList.includes(appName)&&!memoryData.apps.includes(appName)){
+        memoryData.apps.push(appName);
+        saveMemory();
+        updateMemory();
+        
+}
+}
+function rmbSecret(secretName){
+    if(!memoryData.secrets.includes(secretName)){
+            memoryData.secrets.push(secretName);
+            saveMemory();
+            updateMemory();
+        }
+    }
+
+function updateMemory(){
+    document.getElementById("appscount").textContent=memoryData.apps.length;
+    document.getElementById("secretscount").textContent=memoryData.secrets.length;
+
+    
+}
+updateMemory();
 //to update timer
-
 function updateTimer() {
-    const now = new Date();
-
+    const now=new Date();
     document.getElementById("taskbarTime").textContent= now.toLocaleTimeString();
 }
 
 updateTimer();
 setInterval(updateTimer, 1000);
-const windowStates = {};
-let highestZIndex = 20000;
+const windowStates= {};
+let highestZIndex= 20000;
 function minimizeWindow(id){
-    const windowElement = document.getElementById(id);
+    const windowElement=document.getElementById(id);
 
     if(!windowElement) return;
 
@@ -127,17 +155,18 @@ function minimizeWindow(id){
 }
 
 function maximizeWindow(id) {
-    const windowElement = document.getElementById(id);
+    const windowElement=document.getElementById(id);
 
     if (!windowElement) return;
     if(windowElement.classList.contains("maximized")){
         restoreWindow(id);
+        return;
     }
 
     else{
-        const rect = windowElement.getBoundingClientRect();
+        const rect=windowElement.getBoundingClientRect();
 
-        windowStates[id] = {
+        windowStates[id]={
             width: rect.width,
             height: rect.height,
             left: rect.left,
@@ -153,20 +182,20 @@ function maximizeWindow(id) {
 }
 
 function restoreWindow(id) {
-    const windowElement = document.getElementById(id);
+    const windowElement=document.getElementById(id);
 
     if (!windowElement) return;
 
     windowElement.classList.remove("maximized");
     windowElement.classList.remove("minimized")
 
-    const state = windowStates[id];
+    const state=windowStates[id];
 
     if (state) {
-        windowElement.style.width = state.width + "px";
-        windowElement.style.height = state.height + "px";
-        windowElement.style.left = state.left + "px";
-        windowElement.style.top = state.top + "px";
+        windowElement.style.width=state.width + "px";
+        windowElement.style.height=state.height + "px";
+        windowElement.style.left=state.left + "px";
+        windowElement.style.top=state.top + "px";
 
     }
 
@@ -180,16 +209,17 @@ const opensound=new Audio("audio/window.mp3");
 const closesound=new Audio("audio/close.mp3");
 
 function openWindow(id) {
-    const windowElement = document.getElementById(id);
+    const windowElement=document.getElementById(id);
 
     if (!windowElement) return;
 
     windowElement.classList.remove("closing");
     windowElement.classList.remove("minimized");
-
-    windowElement.style.display = "block";
+    
+    windowElement.style.display="block";
+    rmbApp(id);
     opensound.currentTime=0;
-    openSound.play();
+    opensound.play();
 
     document.querySelectorAll(".window, .palantir-app").forEach(function(otherWindow) {
         otherWindow.classList.remove("active");
@@ -221,23 +251,21 @@ function closeWindow(id) {
 
 }
 
-const windows = document.querySelectorAll(".window");
+const windows=document.querySelectorAll(".window");
 
 windows.forEach(function(win) {
-    const bar = win.querySelector(".window-bar");
+    const bar=win.querySelector(".window-bar");
 
     bar.addEventListener("mousedown", function(event) {
       if (event.target.tagName === "BUTTON") {
             return;
         }
-        let offsetX = event.clientX - win.offsetLeft;
-        let offsetY = event.clientY - win.offsetTop;
+        let offsetX=event.clientX - win.offsetLeft;
+        let offsetY=event.clientY - win.offsetTop;
         function moveWindow(event) {
-            win.style.left =
-                (event.clientX - offsetX) + "px";
+            win.style.left =(event.clientX - offsetX) + "px";
 
-            win.style.top =
-                (event.clientY - offsetY) + "px";
+            win.style.top =(event.clientY - offsetY) + "px";
         }
         document.addEventListener("mousemove", moveWindow);
         document.addEventListener("mouseup", function() {
@@ -247,11 +275,10 @@ windows.forEach(function(win) {
 });
 //to add notes to local storage. it can be retrievd later
 function saveNotes() {
-    const title = document.getElementById("noteTitle").value;
-    const text = document.getElementById("notes").value;
+    const title=document.getElementById("noteTitle").value;
+    const text=document.getElementById("notes").value;
     if (title === "" || text === "") {
-        document.getElementById("savedMessage").textContent =
-            "Please add a title and a note.";
+        document.getElementById("savedMessage").textContent ="Please add a title and a note.";
         return;
     }
 
@@ -264,19 +291,18 @@ function saveNotes() {
         "middleEarthNotes",
         JSON.stringify(notes)
     );
-    document.getElementById("noteTitle").value = "";
-    document.getElementById("notes").value = "";
-    document.getElementById("savedMessage").textContent =
-        "Note saved!";
+    document.getElementById("noteTitle").value="";
+    document.getElementById("notes").value="";
+    document.getElementById("savedMessage").textContent = "Note saved!";
 }
 
 
 function clearNotes() {
 
     localStorage.removeItem("middleEarthNotes");
-    document.getElementById("noteTitle").value = "";
-    document.getElementById("notes").value = "";
-    document.getElementById("savedNotes").innerHTML = "";
+    document.getElementById("noteTitle").value="";
+    document.getElementById("notes").value="";
+    document.getElementById("savedNotes").innerHTML="";
     document.getElementById("savedMessage").textContent ="All notes cleared";
 }
 
@@ -285,13 +311,12 @@ function clearNotes() {
 function viewNotes() {
 
     const container =document.getElementById("savedNotes");
-    container.innerHTML = "";
+    container.innerHTML="";
 
     let notes =JSON.parse(localStorage.getItem("middleEarthNotes")) || [];
 
     if (notes.length === 0) {
-        container.innerHTML =
-            "<p>No saved notes.</p>";
+        container.innerHTML ="<p>No saved notes.</p>";
 
         return;
     }
@@ -299,8 +324,8 @@ function viewNotes() {
     notes.forEach(function(note, index) {
 
         const noteDiv =document.createElement("div");
-        noteDiv.className = "note";
-        noteDiv.innerHTML = `
+        noteDiv.className="note";
+        noteDiv.innerHTML=`
             <h4>${note.title}</h4>
             <p>${note.text}</p>
             <button onclick="deleteNote(${index})">
@@ -372,24 +397,23 @@ function pauseTimer() {
     if (timerInterval !== null) {
 
         clearInterval(timerInterval);
-        timerInterval = null;
+        timerInterval=null;
 
-        document.getElementById("timerMessage").textContent =
-            "Timer paused.";
+        document.getElementById("timerMessage").textContent ="Timer paused.";
     }
 }
 
 function resetTimer() {
 
     clearInterval(timerInterval);
-    timerInterval = null;
+    timerInterval=null;
 
-    timerSeconds = 300;
+    timerSeconds=300;
 
-    document.getElementById("timerMinutes").value = "";
-    document.getElementById("timerSeconds").value = "";
+    document.getElementById("timerMinutes").value="";
+    document.getElementById("timerSeconds").value="";
 
-    document.getElementById("timerMessage").textContent = "";
+    document.getElementById("timerMessage").textContent="";
 
     updateTimerDisplay();
 }
@@ -406,7 +430,7 @@ windows.forEach(function(win) {
 
         highestZIndex++;
 
-        win.style.zIndex = highestZIndex;
+        win.style.zIndex=highestZIndex;
         activeappsbar(win.id);
 
     });
@@ -464,7 +488,7 @@ function nextImage() {
     currentImage++;
 
     if (currentImage >= galleryImages.length) {
-        currentImage = 0;
+        currentImage=0;
     }
 
     showImage();
@@ -474,7 +498,7 @@ function previousImage() {
     currentImage--;
 
     if (currentImage < 0) {
-        currentImage = galleryImages.length - 1;
+        currentImage=galleryImages.length - 1;
     }
 
     showImage();
@@ -488,10 +512,10 @@ function startPalantirDrag(event) {
         return;
     }
 
-    const palantir = document.getElementById("oracleWindow");
+    const palantir=document.getElementById("oracleWindow");
 
-    let offsetX = event.clientX - palantir.offsetLeft;
-    let offsetY = event.clientY - palantir.offsetTop;
+    let offsetX=event.clientX - palantir.offsetLeft;
+    let offsetY=event.clientY - palantir.offsetTop;
 
     function movePalantir(event) {
         palantir.style.left =(event.clientX - offsetX) + "px";
@@ -507,7 +531,7 @@ function startPalantirDrag(event) {
 
 document.querySelectorAll(".window-bar").forEach(function(bar) {
     bar.addEventListener("dblclick", function() {
-        const windowElement = bar.closest(".window");
+        const windowElement=bar.closest(".window");
 
         if (!windowElement) return;
 
@@ -517,11 +541,11 @@ document.querySelectorAll(".window-bar").forEach(function(bar) {
 
 
 async function showWeather() {
-    const locationInput = document.getElementById("weatherLocation");
-    const location = locationInput.value.trim();
-    const crystal = document.querySelector(".crystal-ball");
-    const weatherInside = document.getElementById("weatherInside");
-    const message = document.getElementById("weatherMessage");
+    const locationInput=document.getElementById("weatherLocation");
+    const location=locationInput.value.trim();
+    const crystal=document.querySelector(".crystal-ball");
+    const weatherInside=document.getElementById("weatherInside");
+    const message=document.getElementById("weatherMessage");
 
     if (location === "") {
         crystal.classList.add("clear");
@@ -536,7 +560,7 @@ async function showWeather() {
     const smoke=document.getElementById("palantirSmoke");
     smoke.src="images/smoke.gif?time="+Date.now();
     smoke.style.display="block";
-    weatherInside.innerHTML = `
+    weatherInside.innerHTML=`
     <span class="weather-searching">
         The Palantír is searching far and wide...
     </span>
@@ -544,12 +568,12 @@ async function showWeather() {
     crystal.classList.add("clear");
    try {
         // Find the location
-        const locationResponse = await fetch(
+        const locationResponse=await fetch(
             "https://geocoding-api.open-meteo.com/v1/search?name=" +
             encodeURIComponent(location) +
             "&count=1&language=en&format=json"
         );
-        const locationData = await locationResponse.json();
+        const locationData=await locationResponse.json();
         if (!locationResponse.ok) {
             throw new Error("Location search failed");
         }
@@ -559,11 +583,11 @@ async function showWeather() {
         }
 
         
-        const place = locationData.results[0];
+        const place=locationData.results[0];
 
         if (!place) {
             throw new Error("Location not found");}
-        const weatherResponse = await fetch(
+        const weatherResponse=await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}&current=temperature_2m,weather_code&temperature_unit=celsius`
         );
 
@@ -571,14 +595,14 @@ async function showWeather() {
             throw new Error("Weather search failed");
         }
 
-        const weatherData = await weatherResponse.json();
-        const temperature = weatherData.current.temperature_2m;
-        const weatherCode = weatherData.current.weather_code;
-        const weather = showWeatherDesc(weatherCode);
+        const weatherData=await weatherResponse.json();
+        const temperature=weatherData.current.temperature_2m;
+        const weatherCode=weatherData.current.weather_code;
+        const weather=showWeatherDesc(weatherCode);
         
         
         setTimeout(function () {
-            weatherInside.innerHTML = `
+            weatherInside.innerHTML=`
                 <span class="weather-location">
                     ${place.name}
                 </span>
@@ -600,7 +624,7 @@ async function showWeather() {
     } catch (error) {
         smoke.style.display="none";
         crystal.classList.add("clear");
-        weatherInside.innerHTML = `
+        weatherInside.innerHTML=`
         <span class="weather-searching">
             The Palantír could not find that place.
         </span>`;
@@ -614,7 +638,7 @@ document.getElementById("weatherLocation").addEventListener("keydown",function(e
 });
 
 async function widgetweather() {
-    const desktopWeather = document.getElementById("desktopWeather");
+    const desktopWeather=document.getElementById("desktopWeather");
     if (!desktopWeather) return;
     desktopWeather.textContent="Searching...";
     try{
@@ -638,34 +662,31 @@ async function widgetweather() {
 }
 }
 function updateDesktopWeather(location, temperature, weather) {
-    const desktopWeather = 
-    document.getElementById("desktopWeather");
+    const desktopWeather=document.getElementById("desktopWeather");
 
     if (!desktopWeather) return;
 
 
-    desktopWeather.innerHTML = `
+    desktopWeather.innerHTML=`
         <div>${location}</div>
         <div>${temperature}°C</div>
         <div>${weather.icon} ${weather.description}</div>
     `;
 }
-const weatherWidgetToggle =
-    document.getElementById("weatherWidgetToggle");
+const weatherWidgetToggle =document.getElementById("weatherWidgetToggle");
 
 if (weatherWidgetToggle) {
 
     weatherWidgetToggle.addEventListener("change", function () {
 
-        const weatherWidget = 
-        document.getElementById("weatherWidget");
+        const weatherWidget=document.getElementById("weatherWidget");
 
         if (this.checked) {
-            weatherWidget.style.display = "block";
+            weatherWidget.style.display="block";
             widgetweather();
         } 
         else {
-            weatherWidget.style.display = "none";
+            weatherWidget.style.display="none";
         }
     });
 
@@ -707,13 +728,13 @@ async function editweatherlocation(location){
 
 
 
-const weatherWidget = document.getElementById("weatherWidget");
+const weatherWidget=document.getElementById("weatherWidget");
 
 if (weatherWidget) {
     weatherWidget.addEventListener("contextmenu", function(event) {
         event.preventDefault();
 
-        const newLocation = prompt(
+        const newLocation=prompt(
             "Enter a location for your weather widget:",
             "Bengaluru"
         );
@@ -786,12 +807,15 @@ function showWeatherDesc(code) {
 
 function forTaskbar(windowId,isOpen){
     const taskbarButtons={
+        introWindow:"task-intro",
         notesWindow:"task-notes",
         galleryWindow:"task-gallery",
-        oracleWindow:"task-oracle",
-        mapWindow:"task-map",
         timerWindow:"task-timer",
+        mapWindow:"task-map",
+        oracleWindow:"task-oracle",
         calendarWindow:"task-calendar",
+        doodleWindow:"task-doodle",
+        libraryWindow:"task-library",
         settingsWindow:"task-settings"
     };
     const buttonId=taskbarButtons[windowId];
@@ -807,12 +831,15 @@ function forTaskbar(windowId,isOpen){
 }
 function activeappsbar(windowId){
     const taskbarButtons={
+        introWindow:"task-intro",
         notesWindow:"task-notes",
         galleryWindow:"task-gallery",
-        oracleWindow:"task-oracle",
-        mapWindow:"task-map",
         timerWindow:"task-timer",
+        mapWindow:"task-map",
+        oracleWindow:"task-oracle",
         calendarWindow:"task-calendar",
+        doodleWindow:"task-doodle",
+        libraryWindow:"task-library",
         settingsWindow:"task-settings"
     };
     document.querySelectorAll(".taskbar button").forEach(function(button){
@@ -833,20 +860,20 @@ function showcalendar(){
     const month=calendarDate.getMonth();
     const monthNames=["January", "February", "March", "April","May","June", "July", "August","September","October", "November", "December"];
 
-    monthElement.textContent = `${monthNames[month]} ${year}`;
+    monthElement.textContent=`${monthNames[month]} ${year}`;
 
-    grid.innerHTML = "";
+    grid.innerHTML="";
 
-    const firstDay = new Date (year, month, 1).getDay();
-    const daysInMonth = new Date(year, month +1, 0).getDate();
+    const firstDay=new Date (year, month, 1).getDay();
+    const daysInMonth=new Date(year, month +1, 0).getDate();
 
-    for (let i = 0; i < firstDay; i++) {
-        const emptyDay = document.createElement("div");
+    for (let i=0; i < firstDay; i++) {
+        const emptyDay=document.createElement("div");
         emptyDay.classList.add("calendar-day", "empty");
         grid.appendChild(emptyDay);
     }
     for (let day=1; day <=daysInMonth; day++) {
-        const dayElement  = document.createElement("button");
+        const dayElement =document.createElement("button");
         dayElement.classList.add("calendar-day");
         dayElement.textContent=day;
         const today=new Date();
@@ -908,18 +935,18 @@ function showCalendarEvent(dateKey){
 
     const savedEvents =JSON.parse(localStorage.getItem("calendarEvents")) || {};
     const defKey=dateKey.slice(5);
-    const events = (defcalendarevents[defKey]||[]).concat(savedEvents[dateKey] || []);
+    const events=(defcalendarevents[defKey]||[]).concat(savedEvents[dateKey] || []);
 
     if(events.length === 0){
 
-        eventDisplay.innerHTML = `
+        eventDisplay.innerHTML=`
             <h3>Events</h3>
             <p>No events recorded for this day.</p>
         `;
         return;
     }
 
-    eventDisplay.innerHTML = `
+    eventDisplay.innerHTML=`
         <h3>Events</h3>
 
         ${events.map(function(event){
@@ -955,17 +982,17 @@ function goToToday(){
 }
 showcalendar();
 
-const doodleCanvas = document.getElementById("doodleCanvas");
-const doodleCtx = doodleCanvas.getContext("2d");
+const doodleCanvas=document.getElementById("doodleCanvas");
+const doodleCtx=doodleCanvas.getContext("2d");
 
-let doodleDrawing = false;
+let doodleDrawing=false;
 
 function canvas() {
-    doodleCanvas.width = 650;
-    doodleCanvas.height = 450;
+    doodleCanvas.width=650;
+    doodleCanvas.height=450;
 
-    doodleCtx.lineCap = "round";
-    doodleCtx.lineJoin = "round";
+    doodleCtx.lineCap="round";
+    doodleCtx.lineJoin="round";
 }
 
 function addCalendarEvent() {
@@ -975,33 +1002,28 @@ function addCalendarEvent() {
     const message =document.getElementById("eventMessage");
 
     if (title === "") {
-
-        message.textContent = "Enter an event name first.";
+        message.textContent="Enter an event name first.";
         return;
     }
 
     const manualDate =document.getElementById("eventDate").value;
 
     let date;
-
     if (manualDate !== "") {
-        date = manualDate;
+        date=manualDate;
     }
-
     else if (selectedCalendarDate) {
-        date = selectedCalendarDate;
+        date=selectedCalendarDate;
     }
-
     else {
         message.textContent ="Select a date first.";
         return;
     }
 
-
     const events=getSavedCalendarEvents();
 
     if (!events[date]) {
-        events[date] = [];
+        events[date]=[];
     }
 
     events[date].push({
@@ -1010,29 +1032,17 @@ function addCalendarEvent() {
 
     });
 
-    localStorage.setItem(
-        "calendarEvents",
-        JSON.stringify(events)
-    );
+    localStorage.setItem("calendarEvents",JSON.stringify(events));
 
-    selectedCalendarDate = date;
+    selectedCalendarDate=date;
+    message.textContent ="Event has been added!";
+    document.getElementById("eventTitle").value="";
+    document.getElementById("eventDescription").value="";
+    document.getElementById("eventDate").value="";
+    document.getElementById("manualEventDate").style.display="none";
 
-    message.textContent =
-        "Event has been added!";
-
-    document.getElementById("eventTitle").value = "";
-
-    document.getElementById("eventDescription").value = "";
-
-    document.getElementById("eventDate").value = "";
-
-    document.getElementById(
-        "manualEventDate"
-    ).style.display = "none";
-
-    const newDate =
-        new Date(date + "T00:00:00");
-    calendarDate = new Date(
+    const newDate =new Date(date + "T00:00:00");
+    calendarDate=new Date(
         newDate.getFullYear(),
         newDate.getMonth(),
         1
@@ -1040,27 +1050,24 @@ function addCalendarEvent() {
     showcalendar();
     showCalendarEvent(date);
 
-    document.getElementById(
-        "eventSelectedDate"
-    ).textContent =
-        `Adding event for ${newDate.toLocaleDateString()}`;
+    document.getElementById("eventSelectedDate").textContent =`Adding event for ${newDate.toLocaleDateString()}`;
 }
 
 canvas();
 
 function getDoodlePosition(e) {
-    const rect = doodleCanvas.getBoundingClientRect();
+    const rect=doodleCanvas.getBoundingClientRect();
 
     return {
-        x: (e.clientX - rect.left) * (doodleCanvas.width / rect.width),
-        y: (e.clientY - rect.top) * (doodleCanvas.height / rect.height)
+        x: (e.clientX- rect.left) * (doodleCanvas.width / rect.width),
+        y: (e.clientY- rect.top) * (doodleCanvas.height / rect.height)
     };
 }
 
 function startDoodle(e) {
-    doodleDrawing = true;
+    doodleDrawing=true;
 
-    const position = getDoodlePosition(e);
+    const position=getDoodlePosition(e);
 
     doodleCtx.beginPath();
     doodleCtx.moveTo(position.x, position.y);
@@ -1069,21 +1076,19 @@ function startDoodle(e) {
 function drawDoodle(e) {
     if (!doodleDrawing) return;
 
-    const position = getDoodlePosition(e);
+    const position=getDoodlePosition(e);
 
     doodleCtx.lineTo(position.x, position.y);
 
-    doodleCtx.strokeStyle =
-        document.getElementById("doodleColor").value;
+    doodleCtx.strokeStyle =document.getElementById("doodleColor").value;
 
-    doodleCtx.lineWidth =
-        Number(document.getElementById("doodleSize").value);
+    doodleCtx.lineWidth =Number(document.getElementById("doodleSize").value);
 
     doodleCtx.stroke();
 }
 
 function stopDoodle() {
-    doodleDrawing = false;
+    doodleDrawing=false;
     doodleCtx.closePath();
 }
 
@@ -1103,13 +1108,13 @@ function clearDoodle() {
 
 function eraser() {
     if (doodleCtx.globalCompositeOperation === "destination-out") {
-        doodleCtx.globalCompositeOperation = "source-over";
-        document.getElementById("eraserButton").textContent = "🧽 Eraser";
+        doodleCtx.globalCompositeOperation="source-over";
+        document.getElementById("eraserButton").textContent="Eraser";
         doodleCanvas.style.cursor='url("images/feather-cursor.png") 4 4,auto';
     
     } else {
-        doodleCtx.globalCompositeOperation = "destination-out";
-        document.getElementById("eraserButton").textContent = "✒️ Pen";
+        doodleCtx.globalCompositeOperation="destination-out";
+        document.getElementById("eraserButton").textContent="Pen";
         doodleCanvas.style.cursor='url("images/potion-cursor.png") 0 0,auto';
     }
 }
@@ -1151,39 +1156,17 @@ function openBook(book){
 
 
 function openExcerpt(){
-    const viewer = document.getElementById("excerptViewer");
-    viewer.src = currentExcerpt;
-    viewer.style.display = "block";
+    const viewer=document.getElementById("excerptViewer");
+    viewer.src=currentExcerpt;
+    viewer.style.display="block";
 }
 const pdfCanvas=document.getElementById("pdfCanvas");
 const pdfCtx=pdfCanvas.getContext("2d");
 let pdfDocument=null;
 let currentPdfPage=1;
 
-async function loadPdfExcerpt(){
-    alert("loading"+currentExcerpt);
-    try{
-        pdfDocument=await pdfjsLib.getDocument(currentExcerpt).promise;
-        alert("pdf loaded");
-    }
-    catch(error){
-        alert("PDF error"+error.message);
-    }
-    
-}
 
-async function renderPdfPage(pageNumber){
-    if(!pdfDocument) return;
-    const page=await pdfDocument.getPage(pageNumber);
-    const viewport=page.getViewport({scale:1.2});
-    pdfCanvas.width=viewport.width;
-    pdfCanvas.height=viewport.height;
-    await page.render({
-        canvasContext:pdfCtx,
-        viewport:viewport
-    }).promise;
-    pdfCanvas.style.display="block";
-}
+
 
 document.querySelectorAll(".window").forEach(function(win) {
     win.addEventListener("mousedown", function() {
@@ -1198,35 +1181,34 @@ document.querySelectorAll(".window").forEach(function(win) {
     });
 });
 
-const desktopIcons = document.querySelectorAll(".icons .icon");
+const desktopIcons=document.querySelectorAll(".icons .icon");
 
 desktopIcons.forEach(function(icon) {
 
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
+    let isDragging=false;
+    let startX=0;
+    let startY=0;
 
     icon.addEventListener("mousedown", function(event) {
 
         if (event.button !== 0) return;
 
-        startX = event.clientX;
-        startY = event.clientY;
-        isDragging = false;
+        startX=event.clientX;
+        startY=event.clientY;
+        isDragging=false;
 
         function moveIcon(event) {
 
-            const distanceX = event.clientX - startX;
-            const distanceY = event.clientY - startY;
+            const distanceX=event.clientX - startX;
+            const distanceY=event.clientY - startY;
 
             if (Math.abs(distanceX) > 5 || Math.abs(distanceY) > 5) {
-                isDragging = true;
+                isDragging=true;
             }
 
             if (!isDragging) return;
 
-            icon.style.transform =
-                `translate(${distanceX}px, ${distanceY}px)`;
+            icon.style.transform =`translate(${distanceX}px, ${distanceY}px)`;
         }
 
         function stopDragging(event) {
@@ -1234,40 +1216,40 @@ desktopIcons.forEach(function(icon) {
             document.removeEventListener("mousemove", moveIcon);
             document.removeEventListener("mouseup", stopDragging);
 
-            icon.style.transform = "";
+            icon.style.transform="";
 
             if (!isDragging) return;
 
-            const iconsArea = document.querySelector(".icons");
-            const otherIcons = [...iconsArea.querySelectorAll(".icon")]
+            const iconsArea=document.querySelector(".icons");
+            const otherIcons=[...iconsArea.querySelectorAll(".icon")]
                 .filter(function(otherIcon) {
                     return otherIcon !== icon;
                 });
 
-            let closestIcon = null;
-            let closestDistance = Infinity;
+            let closestIcon=null;
+            let closestDistance=Infinity;
 
             otherIcons.forEach(function(otherIcon) {
 
-                const rect = otherIcon.getBoundingClientRect();
+                const rect=otherIcon.getBoundingClientRect();
 
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
+                const centerX=rect.left + rect.width / 2;
+                const centerY=rect.top + rect.height / 2;
 
-                const distance = Math.hypot(
+                const distance=Math.hypot(
                     event.clientX - centerX,
                     event.clientY - centerY
                 );
 
                 if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestIcon = otherIcon;
+                    closestDistance=distance;
+                    closestIcon=otherIcon;
                 }
             });
 
             if (closestIcon && closestDistance < 80) {
 
-                const rect = closestIcon.getBoundingClientRect();
+                const rect=closestIcon.getBoundingClientRect();
 
                 if (event.clientX < rect.left + rect.width / 2) {
                     iconsArea.insertBefore(icon, closestIcon);
@@ -1279,10 +1261,10 @@ desktopIcons.forEach(function(icon) {
                 }
             }
 
-            icon.dataset.dragged = "true";
+            icon.dataset.dragged="true";
 
             setTimeout(function() {
-                icon.dataset.dragged = "false";
+                icon.dataset.dragged="false";
             }, 100);
         }
 
@@ -1349,11 +1331,11 @@ document.addEventListener("mousemove", function(event) {
     if(document.getElementById("doodleWindow").contains(event.target)){
         return;
     }
-    const sparkle = document.createElement("span");
-    sparkle.className = "magic-sparkle";
-    sparkle.textContent = "⚔️";
-    sparkle.style.left = event.clientX + "px";
-    sparkle.style.top = event.clientY + "px";
+    const sparkle=document.createElement("span");
+    sparkle.className="magic-sparkle";
+    sparkle.textContent="⚔️";
+    sparkle.style.left=event.clientX + "px";
+    sparkle.style.top=event.clientY + "px";
     document.body.appendChild(sparkle);
 
 setTimeout(function() {
@@ -1379,19 +1361,19 @@ const clockWidgetToggle=document.getElementById("clockWidgetToggle");
 if (clockWidgetToggle) {
     clockWidgetToggle.addEventListener("change", function(){
 
-        const clockWidget = document.getElementById("clockWidget");
+        const clockWidget=document.getElementById("clockWidget");
 
         if (this.checked) {
-            clockWidget.style.display = "block";
+            clockWidget.style.display="block";
         } else {
-            clockWidget.style.display = "none"
+            clockWidget.style.display="none"
         }
     });
 }
 
 
 function updateDesktopEvents() {
-    const eventsList = document.getElementById("desktopEventsList");
+    const eventsList=document.getElementById("desktopEventsList");
 
     if (!eventsList) return;
 
@@ -1403,12 +1385,12 @@ function updateDesktopEvents() {
         }
     });
 
-    const today = new Date();
+    const today=new Date();
     today.setHours(0, 0, 0, 0);
 
-    const upcomingEvents = Object.entries(events)
+    const upcomingEvents=Object.entries(events)
         .filter(([dateKey]) => {
-            const eventDate = new Date(dateKey + "T00:00:00");
+            const eventDate=new Date(dateKey + "T00:00:00");
             return eventDate >= today;
         })
         .sort(([dateA], [dateB]) => {
@@ -1417,19 +1399,19 @@ function updateDesktopEvents() {
         .slice(0, 4);
 
     if (upcomingEvents.length === 0) {
-        eventsList.innerHTML = "<p>No upcoming events</p>";
+        eventsList.innerHTML="<p>No upcoming events</p>";
         return;
     }
 
-    eventsList.innerHTML = upcomingEvents.map(([dateKey, eventData]) => {
-        const date = new Date(dateKey + "T00:00:00");
+    eventsList.innerHTML=upcomingEvents.map(([dateKey, eventData]) => {
+        const date=new Date(dateKey + "T00:00:00");
 
-        const formattedDate = date.toLocaleDateString("en-US", {
+        const formattedDate=date.toLocaleDateString("en-US", {
             day: "numeric",
             month: "short"
         });
 
-        const eventName = Array.isArray(eventData)
+        const eventName=Array.isArray(eventData)
     ? eventData.map(event => event.title).join(", ")
     : eventData.title;
         return `
@@ -1442,16 +1424,15 @@ function updateDesktopEvents() {
 }
 updateDesktopEvents();
 
-const eventWidgetToggle = document.getElementById("eventsWidgetToggle");
+const eventWidgetToggle=document.getElementById("eventsWidgetToggle");
 if (eventWidgetToggle)  {
     eventWidgetToggle.addEventListener("change", function() {
-
-        const eventWidget = document.getElementById("eventsWidget");
+        const eventWidget=document.getElementById("eventsWidget");
 
         if (this.checked) {
-            eventWidget.style.display = "block";
+            eventWidget.style.display="block";
         } else {
-            eventWidget.style.display = "none";
+            eventWidget.style.display="none";
         }
     });
 
@@ -1460,22 +1441,19 @@ if (eventWidgetToggle)  {
     }
 }
 
-const desktopWidgets = document.querySelectorAll(".desktop-widget");
+const desktopWidgets=document.querySelectorAll(".desktop-widget");
 
 desktopWidgets.forEach(function(widget) {
 
     widget.addEventListener("mousedown",function(event) {
 
         if (event.button !== 0) return;
-
         let offsetX=event.clientX-widget.offsetLeft;
         let offsetY=event.clientY-widget.offsetTop;
-
         function moveWidget(event) {
-            widget.style.left = (event.clientX - offsetX) + "px";
-            widget.style.top = (event.clientY - offsetY) + "px";
+            widget.style.left=(event.clientX - offsetX) + "px";
+            widget.style.top=(event.clientY - offsetY) + "px";
         }
-
         function stopDragging() {
             document.removeEventListener("mousemove", moveWidget);
             document.removeEventListener("mouseup", stopDragging);
@@ -1491,8 +1469,19 @@ console.log("SCRIPT RUNNING");
 console.log("openWindow:", typeof openWindow);
 console.log("doodleWindow:", document.getElementById("doodleWindow"));
 
+
+
+function elvenleaf(){
+    const leaves=document.getElementById("leaves");
+    leaves.src="images/leaves.gif?time="+Date.now();
+    leaves.style.display="block";
+    setTimeout(function(){
+        leaves.style.display="none";
+    },4000);
+}
 function showRing(){
     const ringGif=document.getElementById("ringGif");
+    rmbSecret("The One Ring");
 ringGif.style.display="block";
 setTimeout(function(){
  ringGif.style.display="none"
@@ -1500,6 +1489,7 @@ setTimeout(function(){
 }
 function hideGollum(){
     const gollum=document.getElementById("gollum");
+    rmbSecret("Gollum");
     gollum.style.transition="transform 0.8s ease, opacity 0.8s ease";
     gollum.style.transform="translateY(100px)";
     gollum.style.opacity="0";
@@ -1517,7 +1507,7 @@ function showTreasure(){
     treasure.classList.add("treasure-show");
 }
 function opentreasure(){
-    
+    rmbSecret("Treasure");
     treasureImage.src="images/treasure.gif?time="+Date.now();
     setTimeout(function(){
         treasureImage.src="images/treasurefinal.png";
@@ -1529,7 +1519,7 @@ function opentreasure(){
 setTimeout(function(){
     showTreasure();
 
-},20000);
+},120000);
 function showLegolas(){
     const legolas=document.querySelector(".legolas");
     legolas.classList.remove("legolas-fly");
@@ -1543,7 +1533,7 @@ function showLegolas(){
 }
 
 function showDragon(){
-    const dragon = document.querySelector(".dragon");
+    const dragon=document.querySelector(".dragon");
     dragon.classList.remove("dragon-fly");
     void dragon.offsetWidth;
     dragon.classList.add("dragon-fly");
@@ -1570,6 +1560,7 @@ setInterval(function(){
 },10000);
 
 function growPlant(){
+    rmbSecret("Plant");
     const plantImage=document.getElementById("plantImage");
     plantImage.src="images/plant.gif";
     setTimeout(function(){
@@ -1577,6 +1568,7 @@ function growPlant(){
     },1800);
 }
 function growLily(){
+    rmbSecret("Lily");
     const lilyImage=document.getElementById("lilyImage");
     lilyImage.src="images/lily.gif";
     setTimeout(function(){
@@ -1584,6 +1576,7 @@ function growLily(){
     },7000);
 }
 function growFlower(){
+    rmbSecret("Flower");
     const flowerImage=document.getElementById("flowerImage");
     flowerImage.src="images/flower.gif";
     setTimeout(function(){
@@ -1598,6 +1591,7 @@ setTimeout(function(){
 },7000);
 
 function flyButterfly(){
+    rmbSecret("Butterfly");
     butterflyImage.src="images/butterfly.gif";
     butterfly.classList.add("butterfly-fly");
 }
@@ -1609,11 +1603,13 @@ function showMoth(){
     moth.style.display="block";
 }
 function flyMoth(){
+    rmbSecret("Moth");
     mothImage.src="images/moth.gif";
     moth.classList.add("moth-fly");
 }
 let starList=[];
 function stars(){
+    rmbSecret("Stars");
     const starArea=document.getElementById("star");
     starArea.innerHTML="";
     starList=[];

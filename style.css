@@ -1,43 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap');
-   *{ box-sizing:border-box;
+
+*{ box-sizing:border-box;
+   cursor:url("images/cursor.png") 4 4,auto;
 }
-*{
-    cursor:url("images/cursor.png") 4 4,auto;
+img{
+    display:block;
+}
+
+html,
+body {
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
 }
 body{
-    margin:0;
     font-family:'Cormorant Garamond',sans-serif;
     height:100vh;
     overflow:hidden;
 
-}
-
-.desktop {
-    height: 100vh;
-    min-height:100vh;
-    width:100%;
-    padding: 45px;
-    padding-bottom:80px;
-    background-image: url("images/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    position:relative;
-    overflow:hidden;
-}
-.desktop-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    max-width:1100px;
-}
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
 }
 
 h1{
@@ -56,15 +37,39 @@ h1{
     font-size:17px;
     letter-spacing:1px;
 }
-
+.desktop{
+    height:100vh;
+    width:100%;
+    padding:45px;
+    padding-bottom:80px;
+    background-image:url("images/background.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    z-index:1;
+}
+button{
+    font-family:inherit;
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease,background 0.2s ease;
+}
+button:hover{
+    transform:translateY(-1px);
+}
+button:active{
+    transform:scale(0.96);
+}
 #introWindow {
-    display: block;
-    position: absolute;
-    width: 500px;
-    left: calc(50% - 250px);
-    top: calc(50% - 200px);
-    margin: 0;
-    z-index: 30000;
+    display:block;
+    position:absolute;
+    width:500px;
+    left:calc(50% - 250px);
+    top:calc(50% - 200px);
+    margin:0;
+    z-index:30;
 }
 #introWindow .window-content{
     text-align:center;
@@ -74,7 +79,6 @@ h1{
     width:100%;
     max-height:280px;
     object-fit:cover;
-    display:block;
     margin-bottom:15px;
 }
 #introWindow h2{
@@ -85,12 +89,12 @@ h1{
 }
 #introWindow .window-content button{
     padding:10px 20px;
-    cursor:pointer;
+
 }
 #introcover{
     position:fixed;
     inset:0;
-    z-index:99999;
+    z-index:28;
     background:#090806;
     display:flex;
     align-items:center;
@@ -98,7 +102,7 @@ h1{
     opacity:1;
     transition:opacity 1s ease;
 }
-#intro cover.fade-out{
+#introcover.fade-out{
     opacity:0;
     pointer-events:none;
 }
@@ -118,15 +122,22 @@ h1{
 .introwarning p{
     line-height:1.6;
 }
-#startIntro{
+.intro-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
     margin-top:15px;
+    
+}
+.intro-buttons button{
+     margin-top:15px;
     padding:10px 24px;
-    cursor:pointer;
     background:#2b2418;
     color:#f3e6c8;
     border:1px solid #b58a45;
 }
-#startIntro:hover{
+
+.intro-buttons button:hover{
     box-shadow:0 0 12px rgba(181,138,69,0.5);
 }
 #introVideo{
@@ -136,24 +147,66 @@ h1{
     height:100%;
     object-fit:cover;
     display:none;
-    z-index:1;
-}
-.intro-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:15px;
-}
-.intro-buttons button{
-    padding:10px 20px;
-    cursor:pointer;
-    background:#2b2418;
-    color:#f3e6c8;
-    border:1px solid #b58a45;
+    z-index:29;
 }
 
-#skipIntro:hover{
-    box-shadow:0 0 12px rgba(181,138,69,0.5);
+
+.header-space{
+    height:100px;
+    width:100%;
+}
+
+
+
+.memory-button{
+    position:fixed;
+    top:20px;
+    right:20%;
+    width:55px;
+    height:55px;
+    padding:0;
+    border:none;
+    background:transparent;
+    z-index:15;
+}
+.memory-button img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+    transition:transform 0.2s ease,filter 0.2s ease;
+}
+.memory-button:hover img{
+    transform:scale(1.2);
+    filter:drop-shadow(0 0 8px rgba(255,215,120,0.8));
+}
+.elvenleaf{
+    position:fixed;
+    top:20px;
+    right:30%;
+    width:45px;
+    height:45px;
+    cursor:pointer;
+    z-index:15;
+}
+.elvenleaf img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+    transition:transform 0.2s ease, filter 0.2s ease;
+}
+.elvenleaf:hover img{
+    transform:scale(1.2);
+    filter:drop-shadow(0 0 8px rgba(233, 252, 66, 0.8));
+}
+#leaves{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+    pointer-events:none;
+    z-index:30;
 }
 .icons{
     display:grid;
@@ -161,42 +214,27 @@ h1{
     gap:30px;
     margin-top:50px;
     align-items:start;
+    z-index:5;
 }
-
-
 .icon {
-    width: 110px;
-    padding: 12px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 14px;
-    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    width:110px;
+    padding:12px;
+    text-align:center;
+    cursor:pointer;
+    border-radius:14px;
+    transition:background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    z-index:6;
 }
 .icon img{
     width:55px;
     height:55px;
     object-fit:contain;
 }
-.icon:hover {
-    background: rgba(255,255,255,0.12);
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25),0 0 18px rgba(218,180,90,0.35);}
-.icon:hover div{
-    transform:scale(1.12) rotate(-2deg);
-    filter:drop-shadow(0 0 8px rgba(218,180,90,0.7));
-}
-.icon:active{
-    transform:translateY(-2px) scale(0.94);
-    transition:transform 0.08s ease;
-}
-.icon:hover span{
-        transform:translateY(2px);
-}
 .icon div{
     font-size:40px;
-    transition: transform 0.25s ease;
+    transition:transform 0.25s ease;
+    line-height:1;
 }
-
 .icon span{
     display:block;
     margin-top:5px;
@@ -205,19 +243,24 @@ h1{
     letter-spacing:0.7px;
     transition:transform 0.25s ease;
 }
+.icon:hover {
+    background:rgba(255,255,255,0.12);
+    transform:translateY(-6px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.25),0 0 18px rgba(218,180,90,0.35);}
+.icon:hover div{
+    transform:scale(1.12) rotate(-2deg);
+    filter:drop-shadow(0 0 8px rgba(218,180,90,0.7));
+}
+.icon:hover span{
+        transform:translateY(2px);
+}
+.icon:active{
+    transform:translateY(-2px) scale(0.94);
+    transition:transform 0.08s ease;
+}
 
-.window-bar button img{
-    width:20px;
-    height:20px;
-    display:block;
-    object-fit:contain;
-}
-.window-bar button{
-    background:transparent;
-    border:none;
-    padding:3px;
-    cursor:pointer;
-}
+
+
 
 .inscription {
     display:flex;
@@ -226,15 +269,14 @@ h1{
 }
 
 .inscription img {
-    width: 300px;
-    height: auto;
-    display: block;
-    transition: filter 0.25s ease, transform
+    width:300px;
+    height:auto;
+    transition:filter 0.25s ease, transform
 0.25s ease;
 }
 
 .inscription img:hover {
-    transform: scale(1.03);
+    transform:scale(1.03);
     filter:brightness(1.3)
     drop-shadow(0 0 4px #ffd36a)
     drop-shadow(0 0 10px #ff9d00)
@@ -257,6 +299,13 @@ h1{
     }
 }
 
+.start{
+    margin-right:25px;
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    letter-spacing:1px;
+    opacity:0.9;
+}
 
 .taskbar{
     position:fixed;
@@ -266,50 +315,73 @@ h1{
     height:58px;
     padding:8px 18px;
     background:rgba(12,18,14,0.9);
-    backdrop-filter:blur(12px);
     color:white;
     display:flex;
     align-items:center;
-    border-top:1px solid rgba(220,215,185,0.18);
     box-shadow:0 -6px 20px rgba(0,0,0,0.25);
-    z-index:9999;
+    z-index:20;
+    border-top:1px solid rgba(218,180,90,0.6);
+    backdrop-filter:blur(6px);
 
 }
+.taskbar-apps{
+    display:flex;
+    gap:6px;
+    align-items:center;
+}
+.taskbar button{
+    width:42px;
+    height:42px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+    background:rgba(30,35,28,0.85);
+    border:1px solid rgba(218,180,90,0.25);
+    border-radius:9px;
+    color:white;
+    font-size:22px;
+    padding:3px 8px;
 
+}
 .taskbar button img{
     width:28px;
     height:28px;
     object-fit:contain;
 }
 
-.start{
-    margin-right:25px;
-    font-family:'Cinzel',serif;
-    font-weight:600;
-    letter-spacing:1px;
-    opacity:0.9;
-}
-.taskbar-apps{
-    display:flex;
-    gap:6px;
-}
-.taskbar button{
-    width:40px;
-    height:40px;
-    background:transparent;
-    border:1px solid transparent;
-    border-radius:8px;
-    color:white;
-    font-size:22px;
-    cursor:pointer;
-    padding:3px 8px;
-    transition:0.2s ease;
-}
 
 .taskbar button:hover{
-    background:rgba(255,255,255,0.12);
-    border-color:rgba(255,255,255,0.12);
-    transform:translateY(-2px);
+   
+    transform:translateY(-4px) scale(1.08);
+    background:rgba(55,58,43,0.95);
+    border-color:rgba(218,180,90,0.6);
+    box-shadow:0 0 10px rgba(181, 138, 69, 0.35);
+
+}
+
+
+.taskbar button:active{
+    transform:translateY(-1px) scale(0.96);
+}
+.taskbar button.open::after{
+    content:"";
+    position:absolute;
+    bottom:2px;
+    left:50%;
+    width:16px;
+    height:2px;
+    transform:translateX(-50%);
+    background:#d8b45a;
+    border-radius:2px;
+    box-shadow:0 0 6px rgba(218,180,90,0.6);
+}
+
+.taskbar button.active-app{
+    background:rgba(218,180,90,0.18);
+    border-color:rgba(218,180,90,0.45);
+    box-shadow:0 0 10px rgba(218,180,90,0.18), inset 0 0 8px rgba(218,180,90,0.08);
 }
 
 #taskbarTime{
@@ -320,6 +392,7 @@ h1{
     opacity:0.85;
     white-space:nowrap;
 }
+
 .timer-gif{
     width:150px;
     height:auto;
@@ -339,21 +412,15 @@ h1{
     border:1px solid rgba(30,45,34,0.8);
     border-radius:12px;
     display:none;
-    z-index:20000;
-    resize:auto;
-    overflow:auto;
+    z-index:22 !important;
+    overflow:hidden;
     box-shadow:0 18px 45px rgba(0,0,0,0.4);
+    resize:both;
+    transition:width 0.2s ease,height 0.2s ease,left 0.2s ease,top 0.2s ease,box-shadow 0.2s ease;
+    animation:windowOpen 0.4s ease-out;
+}
 
-    
-}
-.window {
-    resize: both;
-    overflow: auto;
-}
-.window,.palantir-app{
-    animation:windowOpen 0.35s ease-out;
-    transition: box-shadow 0.2s ease;
-}
+
 @keyframes windowOpen{
     from{
         opacity:0;
@@ -388,30 +455,33 @@ h1{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    cursor:move;
     border-radius:11px 11px 0 0;
     font-family:'Cinzel',serif;
     font-weight:600;
     letter-spacing:0.5px;
+    border-bottom:1px solid rgba(218,180,90,0.65);
+    cursor:grab;
+    user-select:none;
 }
 
 .window-bar button{
-    background:rgba(255,255,255,0.88);
+    background:transparent;
     border:none;
-    border-radius:6px;
     color:white;
     font-size:14px;
     padding:4px 6px;
-    cursor:pointer;
-    transition:0.2s ease;
+   
+}
+.window-bar button img{
+    width:20px;
+    height:20px;
+    object-fit:contain;
 }
 .window-bar button:hover{
     background:rgba(255,255,255,0.2);
 }
 
-.window-content{
-    padding:20px;
-}
+
 .window-content h2{
     margin-top:0;
     font-family:'Cinzel',serif;
@@ -424,16 +494,12 @@ h1{
     border-radius:6px;
     padding:8px 13px;
     font-family:'Cormorant Garamond',sans-serif;
-    cursor:pointer;
-    transition:0.2s ease;
+    
 }
 .window-content button:hover{
     background:#344d3a;
-    transform:translateY(-1px);
 }
-.window-content button:active{
-    transform:translateY(0);
-}
+
 
 .window-content input, .window-content textarea{
     border:1px solid #aab5a8;
@@ -441,16 +507,13 @@ h1{
     background:#f8faf5;
     color:#20261f;
     outline:none;
-    transition:0.2 ease;
+    transition:0.2s ease;
 }
 .window-content input:focus,.window-content textarea:focus{
     border-color:#26382b;
     box-shadow:0 0 0 2px rgba(38,56,43,0.12);
 }
-.window{
-    position:absolute;
-    overflow:hidden;
-}
+
 .window::before,.window::after{
     content:"";
     position:absolute;
@@ -466,89 +529,23 @@ h1{
     left:4px;
     background-image:url("images/corner-top-left.png");
 }
-.window::after{
-    right:4px;
-    bottom:4px;
-    background-image:url("images/corner-bottom-right.png")
-}
-.window-bar{
-    border-bottom:1px solid rgba(218,180,90,0.65);
-}
+
+
 .window-content{
     position:relative;
-    background: linear-gradient(rgba(245,239,216,0.88),rgba(232,222,190,0.88)),url("images/parchment-light.png");
+   
     background-size:cover;
     background-position:center;
+    padding:20px;
+    overflow:auto;
+
 }
-.taskbar{
-    border-top:1px solid rgba(218,180,90,0.6);
-}
-.taskbar button{
-    position:relative;
-}
-.taskbar button.open::after{
-    content:"";
-    position:absolute;
-    bottom:2px;
-    left:50%;
-    width:16px;
-    height:2px;
-    transform:translateX(-50%);
-    background:#d8b45a;
-    border-radius:2px;
-    box-shadow:0 0 6px rgba(218,180,90,0.6);
-}
-.taskbar button{
-    position:relative;
-    transition:transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-.taskbar button:hover{
-    transform:translateY(-4px) scale(1.08);
-    background:rgba(255,255,255,0.12);
-    box-shadow:0 5px 12px rgba(0,0,0,0.25);
-}
-.taskbar button:active{
-    transform:translateY(-1px) scale(0.96);
-}
-.taskbar button.active-app{
-    background:rgba(218,180,90,0.18);
-    border-color:rgba(218,180,90,0.45);
-    box-shadow:0 0 10px rgba(218,180,90,0.18), inset 0 0 8px rgba(218,180,90,0.08);
-}
-.taskbar button{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0;
-    line-height:1;
-    width:42px;
-    height:42px;
-    background:rgba(30,35,28,0.85);
-    border:1px solid rgba(218,180,90,0.25);
-    border-radius:9px;
-    color:white;
-    font-size:22px;
-    cursor:pointer;
-    padding:3px 8px;
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, border-colour  0.2 ease;
-}
-.taskbar button:hover{
-    transform:translateY(-4px) scale(1.08);
-    background:rgba(55,58,43,0.95);
-    border-color:rgba(218,180,90,0.6);
-    box-shadow:0 5px 12px rgba(0,0,0,0.3), 0 0 12px rgba(218,180,90,0.2);
-}
-.taskbar button:active{
-    transform:translateY(-1px) scale(0.96);
-}
-.taskbar button.active-app{
-    background:rgba(218,180,90,0.18);
-    border-color:rgba(218,180,90,0.55);
-    box-shadow:0 0 10px rgba(218,180,90,0.18),inset 0 0 8px rgba(218,180,90,08);
-}
+
+
+
 textarea{
     width:100%;
-    height:150px;
+    height:120px;
     padding:10px;
     resize:none;
     font-family:Arial,sans-serif;
@@ -560,9 +557,8 @@ textarea{
 
 .notes-buttons button{
     padding:6px 12px;
-    margin-right:5px;
-    cursor:pointer;
-}
+    margin-right:0;}
+    
 
 #savedMessage{
     font-size:14px;
@@ -578,21 +574,13 @@ textarea{
     font-family:'Cormorant Garamond',sans-serif;
 }
 
-textarea{
-    width:100%;
-    height:120px;
-    padding:10px;
-    resize:none;
-    font-family:Arial,sans-serif;
-}
+
 .notes-buttons{
     display:flex;
     flex-wrap:wrap;
     gap:6px;
 }
-.notes-buttons button{
-    margin:0;
-}
+
 #savedNotes{
     margin-top:15px;
 }
@@ -612,9 +600,7 @@ textarea{
     margin:0 0 10px;
     line-height:1.4;
 }
-.note button{
-    cursor:pointer;
-}
+
 
 .timer-content{
     text-align:center;
@@ -640,7 +626,7 @@ textarea{
     padding:8px;
     border:1px solid #aab5a8;
     border-radius:6px;
-    box-sizing:border-box;
+
 }
 .timer-buttons{
     display:flex;
@@ -651,7 +637,6 @@ textarea{
 .timer-buttons button{
     padding:7px 12px;
     margin:3px;
-    cursor:pointer;
 }
 
 #timerMessage{
@@ -663,46 +648,38 @@ textarea{
 }
 
 .gallery-content {
-    text-align: center;
+    text-align:center;
 }
 
 #galleryImage {
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
-    display: block;
-    margin: 10px auto;
+    width:100%;
+    height:250px;
+    object-fit:contain;
+    margin:10px auto;
 }
 
 .gallery-buttons {
-    margin-top: 15px;
+    margin-top:15px;
 }
 
 .gallery-buttons button {
-    padding: 8px 12px;
-    margin: 3px;
-    cursor: pointer;
+    padding:8px 12px;
+    margin:3px;
 }
 
 #galleryCounter {
-    font-size: 14px;
-}
-.window {
-    position: absolute;
-    resize: both;
-    overflow: auto;
-    min-width: 250px;
-    min-height: 150px;
+    font-size:14px;
 }
 
+
 .window::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 15px;
-    height: 15px;
-    cursor: nwse-resize;
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:15px;
+    height:15px;
+    cursor:nwse-resize;
 }
 .palantir-app{
     position:absolute;
@@ -711,15 +688,15 @@ textarea{
     width:500px;
     height:520px;
     display:none;
-    z-index:30000 !important;
+    z-index:25 !important;
     cursor:move;
-}
-.palantir-app{
-    display:none;
     flex-direction:column;
     align-items:center;
     padding-top:35px;
-    cursor:move;
+    animation:windowOpen 0.35s ease-out;
+    transition:box-shadow 0.2s ease;
+    border-radius:12px;
+
 }
 .palantir-controls input, .palantir-control button{ cursor:default;}
 
@@ -742,15 +719,13 @@ textarea{
     left:50%;
     bottom:25px;
     transform:translateX(-50%);
-    z-index:4;
+    z-index:25;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:8px;
 }
-.palantir-controls button{
-    padding:8px 18px;
-}
+
 .crystal-ball{
     position:relative;
     width:300px;
@@ -764,29 +739,28 @@ textarea{
     width:100%;
     height:100%;
     object-fit:contain;
-    left:0;
-    top:0;
-    z-index:1;
+    inset:0;
+    z-index:25;
 }
 .palantir-smoke {
-    position: absolute;
-    top: -22%;
-    left: -17%;
-    width: 134%;
-    height: 140%;
-    object-fit: contain;
-    z-index: 2;
-    pointer-events: none;
-    display: none;
+    position:absolute;
+    top:-22%;
+    left:-17%;
+    width:134%;
+    height:140%;
+    object-fit:contain;
+    z-index:8;
+    pointer-events:none;
+    display:none;
 }
 .mini-palantir,
 .palantir-container {
-    overflow: hidden;
+    overflow:hidden;
 }
 .palantir-controls input{
     width:220px;
     padding:9px 12px;
-    box-sizing:border-box;
+
 }
 .palantir-controls button{
     padding:8px 20px;
@@ -804,18 +778,9 @@ textarea{
 .palantir-close img{
     width:24px;
     height:24px;
-    display:block;
 }
 .crystal-ball.foggy #palantirSmoke{
     opacity:1;
-}
-.crystal-ball{
-    position:relative;
-    width:300px;
-    height:300px;
-    margin:10px auto 12px;
-    overflow:hidden;
-    border-radius:50%;
 }
 
 .crystal-ball.clear .weather-inside{
@@ -872,7 +837,7 @@ textarea{
     display:flex;
     align-items:center;
     gap:10px;
-    z-index:1;
+    z-index:15;
     font-family:'Cinzel',serif;
     font-size:14px;
     color:#f4f0d4;
@@ -935,7 +900,7 @@ body.dark-mode .taskbar{
     border-top-color:rgba(197,181,111,0.25);
 }
 body.dark-mode .taskbar button:hover{
-    background: rgba(197,181,111,0.12);
+    background:rgba(197,181,111,0.12);
     border-color:rgba(197,181,111,0.2)
 }
 .settings-content{
@@ -953,7 +918,7 @@ body.dark-mode .taskbar button:hover{
     flex-direction:column;
     gap:6px;
 }
-.settings-row strong{
+.setting-row strong{
     font-family:'Cinzel',serif;
 }
 .setting-row p{
@@ -961,7 +926,7 @@ body.dark-mode .taskbar button:hover{
     font-size:13px;
     opacity:0.7;
 }
-.settings-row select{
+.setting-row select{
     padding:8px 10px;
     border-radius:7px;
     border:1px solid #aab5a8;
@@ -978,7 +943,7 @@ body.dark-mode .taskbar button:hover{
     padding:15px;
 }
 
-body.dark-mode .settings-row{
+body.dark-mode .setting-row{
     background:rgba(197,181,111,0.08);
 }
 
@@ -998,7 +963,6 @@ body.dark-mode .settings-row{
     height:70px;
     object-fit:cover;
     border-radius:8px;
-    display:block;
 }
 .wallpaper-preview span{
     font-size:13px;
@@ -1008,52 +972,9 @@ body.dark-mode .settings-row{
 }
 .wallpaper-picker >button{
     padding:6px 9px;
-    cursor:pointer;
 }
 h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
-button{
-    font-family:inherit;
-    transition:transform 0.2s ease,box-shadow 0.2s ease, background 0.2 ease;
-}
-button:hover{
-    transform:translateY(-1px);
-}
-button:active{
-    transform:scale(0.96);
-}
-.window,.palantir-app{
-    border-radius:12px;
-}
-.window-bar{
-    border-bottom:1px solid rgba(218,180,90,0.65);
-}
-.taskbar{
-    border-top:1px solid rgba(218,180,90,0.6);
-}
-.icon div{
-    line-height:1;
-}
-.icon span{
-    display:block;
-    margin-top:6px;
-}
-.taskbar-apps{
-    display:flex;
-    align-items:center;
-    gap:6px;
-}
-.window::before,.window::after{
-    pointer-events:none;
-}
-body.dark-mode .window{
-    background:rgba(32,37,31,0.97);
-    color:#f4f0df;
-}
-body.dark-mode .window-content{
-    background:linear-gradient(rgba(38,42,34,0.92),rgba(29,33,28,0.92)),url("images/parchment-dark.png");
-    background-size:cover;
-    background-position:center;
-}
+
 
 .calendar-content{
     display:flex;
@@ -1084,11 +1005,9 @@ body.dark-mode .window-content{
     background:#344735;
     color:#f4ead0;
     font-size:22px;
-    cursor:pointer;
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
+   
 }
 .calendar-header button:hover{
-    transform:translateY(-2px);
     box-shadow:0 0 12px rgba(218,180,90,0.35);
 }
 .today-button{
@@ -1115,57 +1034,57 @@ body.dark-mode .window-content{
     margin-bottom:6px;
 }
 .calendar-weekdays span {
-    text-align: center;
-    color: #d9c58b;
-    font-weight: bold;
-    font-size: 16px;
+    text-align:center;
+    color:#d9c58b;
+    font-weight:bold;
+    font-size:16px;
     
 }
 .calendar-grid{
     width:100%;
-    max-width: 700px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
+    max-width:700px;
+    display:grid;
+    grid-template-columns:repeat(7, 1fr);
+    gap:6px;
 }
 
 
 .calendar-day {
-    height: 55px;
-    border: 1px solid #455844;
-    border-radius: 8px;
-    background: #344735;
-    color: #f4ead0;
-    font-family: inherit;
-    font-size: 17px;
-    cursor: pointer;
-    transition: transform 0.15s ease,
+    height:55px;
+    border:1px solid #455844;
+    border-radius:8px;
+    background:#344735;
+    color:#f4ead0;
+    font-family:inherit;
+    font-size:17px;
+    cursor:pointer;
+    transition:transform 0.15s ease,
                 background 0.15s ease,
                 box-shadow 0.15s ease;
 
 }
 
 .calendar-day:hover{
-    transform: translateY(-2px);
-    background: #425843;
-    box-shadow: 0 0 10px rgba(218, 180, 90, 0.25);
+    transform:translateY(-2px);
+    background:#425843;
+    box-shadow:0 0 10px rgba(218, 180, 90, 0.25);
 }
 
 .calendar-day.empty {
-    background: transparent;
-    border: none;
-    cursor: default;
+    background:transparent;
+    border:none;
+    cursor:default;
 }
 .calendar-day.empty:hover{
-    transform: none;
+    transform:none;
     box-shadow:none;
 }
 
 .calendar-day.today{
-    border: 2px solid #d8b45a;
-    color: #f1d27a;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(218, 180,90,0.25);
+    border:2px solid #d8b45a;
+    color:#f1d27a;
+    font-weight:bold;
+    box-shadow:0 0 10px rgba(218, 180,90,0.25);
 }
 #selectedDate{
     margin-top:25px;
@@ -1174,15 +1093,16 @@ body.dark-mode .window-content{
     text-align:center;
 }
 #calendarWindow{
-    width:600px;
-    height:540px;
-    min-width:500px;
-    min-height:400px;
+    width:400px;
+    height:340px;
     max-width:90vw;
     max-height:80vh;
+    overflow:hidden;
 }
 #calendarWindow .window-content{
-    overflow:auto;
+    height:calc(100% - 45px);
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
 #doodleWindow{
@@ -1206,11 +1126,11 @@ body.dark-mode .window-content{
     width:500px;
     height:400px;
 }
-.book{
-    min-height:90px;
-}
+
 .library-content{
     text-align:center;
+    overflow:auto;
+    height:100%;
 }
 .library-content h2{
     margin-top:5px;
@@ -1244,81 +1164,36 @@ body.dark-mode .window-content{
 }
 
 .window.minimized{
-    display: none !important;
+    display:none !important;
     pointer-events:none;
 }
 
 .window.maximized {
-    width: calc(100% - 20px) !important;
-    height: calc(100% - 90px) !important;
-    left: 10px !important;
-    top: 10px !important;
+    width:calc(100% - 20px) !important;
+    height:calc(100% - 90px) !important;
+    left:10px !important;
+    top:10px !important;
 
 }
 
 .window.maximized .window-content {
-    height: calc(100% - 45px);
+    height:calc(100% - 45px);
 }
 
-.window {
-    transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    left 0.2s ease,
-    top 0.2s ease,
-    box-shadow 0.2s ease;
-}
-.window.active {
-    box-shadow:
-         0 0 0 2px rgba(218, 180, 90, 0.35),
-         0 10px 30px rgba(0, 0, 0, 0.45);
-}
+
+
 
 .window:not(.active) {
-    opacity: 0.94;
+    opacity:0.94;
 }
 
-.window:hover {
-    box-shadow:
-    0 0 0 2px rgba(218, 180, 90, 0.25),
-    0 10px 28px 28px rgba(0, 0, 0, 0.4);
-}
 
-.window-bar {
-    cursor: grab;
-    user-select: none;
 
-}
 
 .window-bar:active{
-    cursor: grabbing;
+    cursor:grabbing;
 }
 
-.window {
-    resize: both;
-    overflow: auto;
-    min-width: 280px;
-    min-height: 180px;
-}
-
-.window {
-    transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    left 0.2s ease,
-    top 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.window.active {
-    box-shadow:
-    0 0 0 2px rgba(218, 180, 90, 0.35),
-    0 10px 30px rgba(0, 0, 0, 0.45);
-}
-
-.window:not(.active){
-    opacity: 0.94;
-}
 
 .window:hover {
     box-shadow:
@@ -1353,7 +1228,6 @@ body.dark-mode .window-content{
     width:100%;
     max-width:900px;
     height:auto;
-    display:block;
     margin:0 auto;
 
 }
@@ -1361,7 +1235,6 @@ body.dark-mode .window-content{
     width:250px;
     flex-shrink:0;
     padding:20px;
-    box-sizing:border-box;
     background:#1b1710;
     border:2px solid #b58a45;
     color:#f3e6c8;
@@ -1403,8 +1276,8 @@ body.dark-mode .window-content{
     color:#f1dfb5;
     font-size:16px;
     cursor:pointer;
-    z-index:5;
-    transition:transition 0.2s ease,box-shadow 0.2s ease;
+    z-index:25;
+    transition:transform 0.2s ease,box-shadow 0.2s ease;
 }
 .map-marker:hover{
     transform:translate(-50%,-50%) scale(1.25);
@@ -1446,7 +1319,7 @@ body.dark-mode .window-content{
 }
 
 .middle-earth-map .map-marker{
-    position:absolute;
+    
     width:20px;
     height:20px;
     padding:0;
@@ -1460,7 +1333,7 @@ body.dark-mode .window-content{
     cursor:pointer;
     z-index:5;
     transform:translate(-50%,-50%);
-    transition:color 0.2s ease, text-shadow 0.2 ease;
+    transition:color 0.2s ease, text-shadow 0.2s ease;
 }
 .middle-earth-map .map-marker:hover{
     transform:translate(-50%,-50%);
@@ -1477,70 +1350,36 @@ body.dark-mode .window-content{
 }
 
 .magic-sparkle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
+    position:fixed;
+    pointer-events:none;
+    z-index:20;
+    color:#fff3d6;
+    font-size:12px;
 
-    color: #fff3d6;
-    font-size: 12px;
 
-
-transform: translate(-50%, -50%);
-animation: sparkleFade 0.7s ease-out forwards;
+transform:translate(-50%, -50%);
+animation:sparkleFade 0.7s ease-out forwards;
 
 }
 
 @keyframes sparkleFade {
     0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        opacity:1;
+        transform:translate(-50%, -50%) scale(1);
     }
 
     100% {
-        opacity: 0;
-        transform: translate(-50%, -80%) scale(0.2);
+        opacity:0;
+        transform:translate(-50%, -80%) scale(0.2);
     }
 }
 
-.taskbar {
-    border-top: 1px solid rgba(181, 138, 69, 0.55);
-    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(6px);
-}
 
-.taskbar button {
-    border-color:rgba(181, 138, 69, 0.65);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 
-}
 
-.taskbar button:hover {
-    box-shadow: 0 0 10px rgba(181, 138, 69, 0.35);
-}
 
-#calendarWindow .calendar-day {
-    transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease;
-}
 
-#calendarWindow .calendar-day:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 10px rgba(181, 138, 69, 0.35);
-}
 
-#calendarWindow .calendar-day.selected {
-    animation: calendarSelect 0.35s ease-out;
-}
-
-#calendarGrid .calendar-day{
-    transition:transform 0.18s ease,box-shadow 0.18s ease,background 0.18s ease;
-}
-#calendarGrid .calendar-day:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 9px rgba(181,138,69,0.3);
-}
 #calendarGrid .calendar-day.selected{
     animation:calendarSelect 0.35s ease-out;
     box-shadow:0 0 14px rgba(181,138,69,0.55);
@@ -1548,58 +1387,54 @@ animation: sparkleFade 0.7s ease-out forwards;
 
 @keyframes calendarSelect {
     0% {
-        transform: scale(0.85);
-        box-shadow: 0 0 0 rgba(181, 138, 69, 0);
+        transform:scale(0.85);
+        box-shadow:0 0 0 rgba(181, 138, 69, 0);
     }
 
+   
     60% {
-        transform: scale(0.85);
-        box-shadow: 0 0 0 rgba(181, 138, 69, 0);
-    }
-
-    60% {
-        transform: scale(1.08);
-        box-shadow: 0 0 14px rgba(181, 138, 69, 0.55);
+        transform:scale(1.08);
+        box-shadow:0 0 14px rgba(181, 138, 69, 0.55);
     }
 
     100% {
-        transform: scale(1);
+        transform:scale(1);
     }
 }
 
 .calendar-events {
-    margin-top: 18px;
-    padding: 12px;
-    border-top: 1pxsolid rgba(181 ,138, 69, 0.45);
+    margin-top:18px;
+    padding:12px;
+    border-top:1pxsolid rgba(181 ,138, 69, 0.45);
 }
 
-.claendar-events h3 {
-    margin: 0 0 10px;
-    font-size: 15px;
+.calendar-events h3 {
+    margin:0 0 10px;
+    font-size:15px;
 }
 
 .calendar-event {
-    display: flex;
-    gap: 12px;
-    padding: 7pxm4px;
-    border-bottom: 1px solid rgba(181,138, 69, 0.18);
+    display:flex;
+    gap:12px;
+    padding:7pxm4px;
+    border-bottom:1px solid rgba(181,138, 69, 0.18);
 }
 
 .calendar-event strong {
-    min-width: 65px;
+    min-width:65px;
 }
 
 .calendar-event span {
-    opacity: 0.85;
+    opacity:0.85;
 }
 
 .desktop-widgets {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    pointer-events: none;
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:12;
+    pointer-events:none;
 }
 .desktop-widget{
     position:absolute;
@@ -1626,7 +1461,6 @@ animation: sparkleFade 0.7s ease-out forwards;
 .analogue-clock img{
     width:110%;
     height:100%;
-    display:block;
 }
 .clock-hand{
     position:absolute;
@@ -1675,22 +1509,20 @@ animation: sparkleFade 0.7s ease-out forwards;
 .mini-palantir img{
     width:100%;
     height:100%;
-    display:block;
 }
 
 #desktopWeather {
-    position: absolute;
-    left: 50%;
+    position:absolute;
+    left:50%;
     top:50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    text-align: center;
-    text-align: center;
-    color: #f3e6c8;
-    text-shadow: 0 0 6px #000;
-    font-size: 15px;
-    font-weight: bold;
-    z-index: 2;
+    transform:translate(-50%, -50%);
+    width:85%;
+    text-align:center;
+    color:#f3e6c8;
+    text-shadow:0 0 6px #000;
+    font-size:15px;
+    font-weight:bold;
+    z-index:5;
 
 }
 
@@ -1711,7 +1543,6 @@ animation: sparkleFade 0.7s ease-out forwards;
 .events-parchment img{
     width:100%;
     height:100%;
-    display:block;
 }
 .events-content{
     position:absolute;
@@ -1752,69 +1583,47 @@ animation: sparkleFade 0.7s ease-out forwards;
     pointer-events:none;
     filter:drop-shadow(0 0 5px rgba(255,170,70,0.5));
 }
-.plant{
+
+.plant,.lily,.flower{
     position:absolute;
+    width:70px;
+    cursor:pointer;
+    z-index:8;
+}
+.plant{
     left:80%;
     top:75%;
-    width:70px;
-    cursor:pointer;
-    z-index:5000;
 }
-.plant img{
-    width:100px;
-    display:block;
-    z-index:5000;
-}
-.plant:hover img{
-    transform:scale(1.05);
-    filter:drop-shadow(0 0 8px rgba(181,138,69,0.5));
-}
+
 .lily{
-    position:absolute;
     left:15%;
     top:78%;
-    width:70px;
-    cursor:pointer;
-    z-index:5000;
-}
-.lily img{
-    width:100px;
-    display:block;
-    z-index:5000;
-}
-.lily:hover img{
-    transform:scale(1.05);
-    filter:drop-shadow(0 0 8px rgba(181,138,69,0.5));
 }
 .flower{
-    position:absolute;
     left:40%;
     top:78%;
-    width:70px;
-    cursor:pointer;
-    z-index:5000;
 }
-.flower img{
+
+.plant img, .lily img, .flower img{
     width:100px;
-    display:block;
-    z-index:5000;
+    z-index:10;
 }
-.flower:hover img{
+.plant:hover img,.lily:hover img, .flower:hover img{
     transform:scale(1.05);
     filter:drop-shadow(0 0 8px rgba(181,138,69,0.5));
 }
-.butterfly{
+
+.butterfly, .moth{
     position:fixed;
-    bottom:45px;
+    bottom:30px;
     left:30%;
     width:100px;
     cursor:pointer;
-    z-index:10000;
+    z-index:10;
     display:none;
 }
-.butterfly img{
+.butterfly img, .moth img{
     width:100px;
-    display:block;
 }
 .butterfly-fly{
     display:block;
@@ -1823,32 +1632,21 @@ animation: sparkleFade 0.7s ease-out forwards;
 }
 @keyframes butterflyFly {
     from {
-        left: 30%;
-        bottom: 45px;
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
+        left:30%;
+        bottom:45px;
+        transform:translate(0, 0) rotate(0deg);
+        opacity:1;
     }
 
     to {
-        left: 110%;
-        bottom: 500px;
-        transform: translate(0, 0) rotate(8deg);
-        opacity: 1;
+        left:110%;
+        bottom:500px;
+        transform:translate(0, 0) rotate(8deg);
+        opacity:1;
     }
 }
-.moth{
-    position:fixed;
-    bottom:35px;
-    left:30%;
-    width:100px;
-    cursor:pointer;
-    z-index:10000;
-    display:none;
-}
-.moth img{
-    width:100px;
-    display:block;
-}
+
+
 .moth-fly{
     display:block;
     animation:mothFly 3s ease-in forwards;
@@ -1875,20 +1673,19 @@ animation: sparkleFade 0.7s ease-out forwards;
     top:82%;
     width:70px;
     cursor:pointer;
-    z-index:5000;
+    z-index:21;
 }
 #gollum{
     position:fixed;
     bottom:50px;
     left:0%;
     width:90px;
-    z-index:500;
+    z-index:10;
     display:none;
     cursor:pointer;
 }
 #gollum img{
     width:100%;
-    display:block;
 }
 #gollum:hover img{
     transform:scale(1.05);
@@ -1924,7 +1721,7 @@ animation: sparkleFade 0.7s ease-out forwards;
 .dragon{
     position:fixed;
     pointer-events:none;
-    z-index:9000;
+    z-index:20;
     display:none;
 }
 .treasure{
@@ -1932,7 +1729,7 @@ animation: sparkleFade 0.7s ease-out forwards;
     bottom:100px;
     right:40%;
     width:110px;
-    z-index:10000;
+    z-index:20;
     display:none;
     cursor:pointer;
     pointer-events:auto;
@@ -1994,9 +1791,4 @@ animation: sparkleFade 0.7s ease-out forwards;
         transform:translateY(120px);
     }
 }
-.window{
-    z-index:20000 !important;
-}
-.plant,.lily,.ring,.treasure,.legolas,.dragon,.butterfly{
-    z-index:100 !important;
-}
+

@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Strider OS </title>
-        <link rel="icon" href="./images/favicon.png?v=2">
+        <title> Wanderlust OS </title>
+        <link rel="icon" type="images/png" href="images/favicon.png">
         <link rel="stylesheet" href="style.css">
     </head>
     <script type="module">
@@ -15,7 +15,7 @@
     <div id="introcover">
         <div class="introwarning">
             <h2>Hellllllloooooo</h2>
-            <p>Welcome to Strider OS. Please adjust your volume (the intro might be a little loud) or else please feel free to skip the intro. Thank you!!! </p>
+            <p>Welcome to Wanderlust OS. Please adjust your volume as there is background music. Thank you!!! </p>
             
         
         <div class="intro-buttons">
@@ -29,24 +29,28 @@
     </div>
 
     <div class="desktop">
+        <div class="header-space"></div>
 
-        <div class="desktop-header">
-            <div>
-                <h1>Strider OS</h1>
-                <p class="subtitle">Welcome, traveller</p>
-            </div>
-        </div>
+       
+        
         <div class="mode-toggle">
             <span id="modeLabel">☀️ Light Mode</span>
             <button id="darkModeToggle" onclick="darkmode()">
                 <span class="toggle-knob"></span>
             </button>
         </div>
+        <div class="memory-button" onclick="openWindow('memoryWindow'); rmbSecret('Arkenstone')">
+            <img src="images/arkenstone.png">
+        </div>
+        <div class="elvenleaf" onclick="elvenleaf()">
+            <img src="images/elvenleaf.png" id="elvenleaf" alt="Elven Leaf">
+        </div>
+        <img src="images/leaves.gif" id="leaves">
 
         <div class="icons">
             <div class="icon" onclick="openWindow('introWindow')">
                 <img src="images/intrologo.png">
-                <span>Introduction  </span>
+                <span>Intro</span>
             </div>
             <div class="icon" onclick="openWindow('notesWindow')">
                 <img src="images/noteslogo.png"> 
@@ -73,10 +77,6 @@
                 <span>Palantir</span>
             </div>
 
-            <div class="icon" onclick="openWindow('settingsWindow')">
-                <img src="images/settingslogo.png">
-                <span>Settings</span>
-            </div>
             <div class="icon" onclick="openWindow('calendarWindow')">
                 <img src="images/calendarlogo.png">
                 <span>Calendar</span>
@@ -88,6 +88,10 @@
             <div class="icon" onclick="openWindow('libraryWindow')">
                 <img src="images/liblogo.png">
                 <span>Library</span>
+            </div>
+            <div class="icon" onclick="openWindow('settingsWindow')">
+                <img src="images/settingslogo.png">
+                <span>Settings</span>
             </div>
         </div>
         <!--All them easter egggssss-->
@@ -157,7 +161,7 @@
 
         <div class="window" id="introWindow">
             <div class="window-bar">
-                <span> Welcome to Strider OS</span>
+                <span> Welcome to Wanderlust OS</span>
                 <div class="window-controls">
                     <button onclick="closeWindow('introWindow')">
                         <img src="images/close.png" alt="Close">
@@ -175,6 +179,32 @@
             </div>
 
 
+        </div>
+        <div class="window" id="memoryWindow">
+            <div class="window-bar">
+                <span> Your Journey </span>
+                <div class="window-controls">
+                    <button onclick="minimizeWindow('memoryWindow')">
+                        -
+                    </button>
+                    <button onclick="maximizeWindow('memoryWindow')">
+                        ⛶
+                    </button>
+                    <button onclick="closeWindow('memoryWindow')">
+                        <img src="images/close.png" alt="Close">
+                    </button>
+                </div>
+            </div>
+            <div class="window-content memory-content">
+                <h2>How much of Middle-earth have you actually explored so far?</h2>
+                <p> Apps opened: <strong id="appscount">0</strong>/10</p>
+                <p>Secrets discovered:<strong id="secretscount">0</strong>/10</p>
+                <hr>
+                
+                <p class="memory-message">
+                    Your journey is being written into historyyy
+                </p>
+            </div>
         </div>
 
             
@@ -505,28 +535,34 @@
 
 
         <div class="taskbar">
-            <span class="start"> Strider OS </span>
+            <span class="start"> Wanderlust OS </span>
             <div class="taskbar-apps">
+                <button id="task-intro" onclick="openWindow('introWIndow')">
+                    <img src="images/intrologo.png">
+                </button>
                 <button id="task-notes" onclick="openWindow('notesWindow')">
                     <img src="images/noteslogo.png">
                 </button>
                 <button id="task-gallery" onclick="openWindow('galleryWindow')">
                     <img src="images/gallerylogo.png">
                 </button>
-                <button id="task-oracle" onclick="openWindow('oracleWindow')">
-                    <img src="images/weatherlogo.png">
+                <button id="task-timer" onclick="openWindow('timerWindow')">
+                    <img src="images/timerlogo.png">
                 </button>
                 <button id="task-map" onclick="openWindow('mapWindow')">
                     <img src="images/maplogo.png">
                 </button>
-                <button id="task-timer" onclick="openWindow('timerWindow')">
-                    <img src="images/timerlogo.png">
+                 <button id="task-oracle" onclick="openWindow('oracleWindow')">
+                    <img src="images/weatherlogo.png">
                 </button>
                 <button id="task-calendar" onclick="openWindow('calendarWindow')">
                     <img src="images/calendarlogo.png">
                 </button>
                 <button id="task-doodle" onclick="openWindow('doodleWindow')">
                     <img src="images/doodlelogo.png">
+                </button>
+                <button id="task-library" onclick="openWindow('libraryWindow')">
+                    <img src="images/liblogo.png">
                 </button>
                 <button id="task-settings" onclick="openWindow('settingsWindow')">
                     <img src="images/settingslogo.png">

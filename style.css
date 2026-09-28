@@ -130,7 +130,6 @@ button:active{
     
 }
 .intro-buttons button{
-     margin-top:15px;
     padding:10px 24px;
     background:#2b2418;
     color:#f3e6c8;
@@ -179,7 +178,7 @@ button:active{
     transform:scale(1.2);
     filter:drop-shadow(0 0 8px rgba(255,215,120,0.8));
 }
-.elvenleaf{
+.elvenleaf,.fire{
     position:fixed;
     top:20px;
     right:30%;
@@ -188,17 +187,19 @@ button:active{
     cursor:pointer;
     z-index:15;
 }
-.elvenleaf img{
+.fire{display:none;}
+
+.elvenleaf img, .fire img{
     width:45px;
     height:45px;
     object-fit:contain;
     transition:transform 0.2s ease, filter 0.2s ease;
 }
-.elvenleaf:hover img{
+.elvenleaf:hover img, .fire:hover img{
     transform:scale(1.2);
-    filter:drop-shadow(0 0 8px rgba(233, 252, 66, 0.8));
+    filter:drop-shadow(0 0 8px rgba(247, 235, 20, 0.8));
 }
-#leaves{
+#leaves, #fires{
     position:fixed;
     inset:0;
     width:100%;
@@ -206,15 +207,15 @@ button:active{
     object-fit:cover;
     display:none;
     pointer-events:none;
-    z-index:30;
+    z-index:35;
 }
+
 .icons{
     display:grid;
     grid-template-columns:repeat(5,100px);
     gap:30px;
     margin-top:50px;
     align-items:start;
-    z-index:5;
 }
 .icon {
     width:110px;
@@ -226,9 +227,11 @@ button:active{
     z-index:6;
 }
 .icon img{
+    display:block;
     width:55px;
     height:55px;
     object-fit:contain;
+    margin:0 auto;
 }
 .icon div{
     font-size:40px;
@@ -242,6 +245,7 @@ button:active{
     font-size:14px;
     letter-spacing:0.7px;
     transition:transform 0.25s ease;
+    text-align:center;
 }
 .icon:hover {
     background:rgba(255,255,255,0.12);
@@ -258,9 +262,14 @@ button:active{
     transform:translateY(-2px) scale(0.94);
     transition:transform 0.08s ease;
 }
-
-
-
+.icons .icon {
+    cursor:grab;
+    user-select:none;
+}
+.icons .icon:active{
+    cursor:grabbing;
+}
+.ma
 
 .inscription {
     display:flex;
@@ -271,12 +280,11 @@ button:active{
 .inscription img {
     width:300px;
     height:auto;
-    transition:filter 0.25s ease, transform
-0.25s ease;
+    transition:filter 0.25s ease, transform 0.25s ease;
 }
 
 .inscription img:hover {
-    transform:scale(1.03);
+    transform:scale(1);
     filter:brightness(1.3)
     drop-shadow(0 0 4px #ffd36a)
     drop-shadow(0 0 10px #ff9d00)
@@ -386,10 +394,9 @@ button:active{
 
 #taskbarTime{
     margin-left:auto;
-    font-family:'Cormorant Garamond',sans-serif;
     font-size:13px;
     letter-spacing:0.5px;
-    opacity:0.85;
+    opacity:0.8;
     white-space:nowrap;
 }
 
@@ -420,6 +427,39 @@ button:active{
     animation:windowOpen 0.4s ease-out;
 }
 
+.window.active,.palantir-app.active{ 
+
+    box-shadow:0 12px 35px rgba(0,0,0,0.28),0 0 0 1px rgba(218,180,90,0.35);
+}
+
+.window:not(.active) {
+    opacity:0.9;
+}
+
+.window:hover {
+    box-shadow:
+        0 0 0 2px rgba(218, 180, 90, 0.25),
+        0 10px 28px rgba(0, 0, 0, 0.4);
+}
+.window.closing,.palantir-app.closing{
+    animation:windowClose 0.35s ease-in forwards;
+}
+.window.minimized{
+    display:none !important;
+    pointer-events:none;
+}
+
+.window.maximized {
+    width:calc(100% - 20px) !important;
+    height:calc(100% - 90px) !important;
+    left:10px !important;
+    top:10px !important;
+
+}
+
+.window.maximized .window-content {
+    height:calc(100% - 45px);
+}
 
 @keyframes windowOpen{
     from{
@@ -431,9 +471,7 @@ button:active{
         transform:scale(1);
     }
 }
-.window.closing,.palantir-app.closing{
-    animation:windowClose 0.35s ease-in forwards;
-}
+
 @keyframes windowClose{
     from{
         opacity:1;
@@ -444,10 +482,7 @@ button:active{
         transform:scale(0.94);
     }
 }
-.window.active,.palantir-app.active{ 
 
-    box-shadow:0 12px 35px rgba(0,0,0,0.28),0 0 0 1px rgba(218,180,90,0.35);
-}
 .window-bar{
     background:#18251b;
     color:#f4f0df;
@@ -466,7 +501,8 @@ button:active{
 
 .window-bar button{
     background:transparent;
-    border:none;
+    border:1px solid #c9a34e;
+    border-radius:8px;
     color:white;
     font-size:14px;
     padding:4px 6px;
@@ -479,6 +515,12 @@ button:active{
 }
 .window-bar button:hover{
     background:rgba(255,255,255,0.2);
+    border-color:#e0bd62;
+    box-shadow:0 0 10px rgba(224,189,98,0.6)
+}
+
+.window-bar:active{
+    cursor:grabbing;
 }
 
 
@@ -493,7 +535,6 @@ button:active{
     border:none;
     border-radius:6px;
     padding:8px 13px;
-    font-family:'Cormorant Garamond',sans-serif;
     
 }
 .window-content button:hover{
@@ -571,7 +612,6 @@ textarea{
 
 #noteTitle{
     margin-bottom:10px;
-    font-family:'Cormorant Garamond',sans-serif;
 }
 
 
@@ -698,7 +738,7 @@ textarea{
     border-radius:12px;
 
 }
-.palantir-controls input, .palantir-control button{ cursor:default;}
+.palantir-controls input, .palantir-controls button{ cursor:default;}
 
 
 
@@ -740,7 +780,7 @@ textarea{
     height:100%;
     object-fit:contain;
     inset:0;
-    z-index:25;
+    z-index:5;
 }
 .palantir-smoke {
     position:absolute;
@@ -749,7 +789,7 @@ textarea{
     width:134%;
     height:140%;
     object-fit:contain;
-    z-index:8;
+    z-index:5;
     pointer-events:none;
     display:none;
 }
@@ -801,7 +841,7 @@ textarea{
     text-align:center;
     color:#f7f4dd;
     text-shadow:0 0 6px rgba(218,180,90,0.8),0 2px 6px rgba(0,0,0,0.9);
-    z-index:3;
+    z-index:7;
     pointer-events:none;
     opacity:0;
     transition:opacity 0.8 ease;
@@ -867,6 +907,7 @@ body.dark-mode .toggle-knob{
     transform:translateX(22px);
 }
 body.dark-mode .desktop{background-image:url("images/darkbg.gif");}
+
 body.dark-mode .window{
     background:rgba(20,29,23,0.97);
     color:#eee9d5;
@@ -932,7 +973,6 @@ body.dark-mode .taskbar button:hover{
     border:1px solid #aab5a8;
     background:#f8faf5;
     color:#20261f;
-    font-family:'Cormorant Garamond',sans-serif;
     cursor:pointer;
 }
 #settingsWindow{
@@ -1025,7 +1065,7 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
     transform:translateY(-2px);
     box-shadow:0 0 10px rgba(218,180,90,0.3);
 }
-.calendar-weekdays{
+.calendar-weekdays,.calendar-grid{
     width:100%;
     max-width:700px;
     display:grid;
@@ -1033,19 +1073,13 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
     gap:6px;
     margin-bottom:6px;
 }
+
 .calendar-weekdays span {
     text-align:center;
     color:#d9c58b;
     font-weight:bold;
     font-size:16px;
     
-}
-.calendar-grid{
-    width:100%;
-    max-width:700px;
-    display:grid;
-    grid-template-columns:repeat(7, 1fr);
-    gap:6px;
 }
 
 
@@ -1104,6 +1138,53 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
     overflow-y:auto;
     overflow-x:hidden;
 }
+#calendarGrid .calendar-day.selected{
+    animation:calendarSelect 0.35s ease-out;
+    box-shadow:0 0 14px rgba(181,138,69,0.55);
+}
+
+@keyframes calendarSelect {
+    0% {
+        transform:scale(0.85);
+        box-shadow:0 0 0 rgba(181, 138, 69, 0);
+    }
+
+   
+    60% {
+        transform:scale(1);
+        box-shadow:0 0 14px rgba(181, 138, 69, 0.55);
+    }
+
+    100% {
+        transform:scale(1);
+    }
+}
+
+.calendar-events {
+    margin-top:18px;
+    padding:12px;
+    border-top:1pxsolid rgba(181 ,138, 69, 0.45);
+}
+
+.calendar-events h3 {
+    margin:0 0 10px;
+    font-size:15px;
+}
+
+.calendar-event {
+    display:flex;
+    gap:12px;
+    padding:7px 4px;
+    border-bottom:1px solid rgba(181,138, 69, 0.18);
+}
+
+.calendar-event strong {
+    min-width:65px;
+}
+
+.calendar-event span {
+    opacity:0.9;
+}
 
 #doodleWindow{
     width:700px;
@@ -1138,7 +1219,7 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
 }
 .library-books{
     display:grid;
-    grid-template-columns:repear(2,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:18px;
     margin-top:25px;
 }
@@ -1163,51 +1244,6 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
     box-shadow:0 5px 14px rgba(139,11,62,0.35);
 }
 
-.window.minimized{
-    display:none !important;
-    pointer-events:none;
-}
-
-.window.maximized {
-    width:calc(100% - 20px) !important;
-    height:calc(100% - 90px) !important;
-    left:10px !important;
-    top:10px !important;
-
-}
-
-.window.maximized .window-content {
-    height:calc(100% - 45px);
-}
-
-
-
-
-.window:not(.active) {
-    opacity:0.94;
-}
-
-
-
-
-.window-bar:active{
-    cursor:grabbing;
-}
-
-
-.window:hover {
-    box-shadow:
-        0 0 0 2px rgba(218, 180, 90, 0.25),
-        0 10px 28px rgba(0, 0, 0, 0.4);
-}
-
-.icons .icon {
-    cursor:grab;
-    user-select:none;
-}
-.icons .icon:active{
-    cursor:grabbing;
-}
 .maplayout{
     display:flex;
     gap:18px;
@@ -1231,6 +1267,8 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
     margin:0 auto;
 
 }
+/*information about the location on a sidebar*/
+
 .sidebar{
     width:250px;
     flex-shrink:0;
@@ -1283,6 +1321,7 @@ h1,h2,h3,.window-bar,.icon span, .start{letter-spacing:0.4px;}
     transform:translate(-50%,-50%) scale(1.25);
     box-shadow:0 0 12px rgba(181,138,69,0.9);
 }
+/*the locations I WORKED HARD to put perfectly on the map*/
 
 .shire-marker{
     left:31%;
@@ -1375,59 +1414,6 @@ animation:sparkleFade 0.7s ease-out forwards;
 }
 
 
-
-
-
-
-
-#calendarGrid .calendar-day.selected{
-    animation:calendarSelect 0.35s ease-out;
-    box-shadow:0 0 14px rgba(181,138,69,0.55);
-}
-
-@keyframes calendarSelect {
-    0% {
-        transform:scale(0.85);
-        box-shadow:0 0 0 rgba(181, 138, 69, 0);
-    }
-
-   
-    60% {
-        transform:scale(1.08);
-        box-shadow:0 0 14px rgba(181, 138, 69, 0.55);
-    }
-
-    100% {
-        transform:scale(1);
-    }
-}
-
-.calendar-events {
-    margin-top:18px;
-    padding:12px;
-    border-top:1pxsolid rgba(181 ,138, 69, 0.45);
-}
-
-.calendar-events h3 {
-    margin:0 0 10px;
-    font-size:15px;
-}
-
-.calendar-event {
-    display:flex;
-    gap:12px;
-    padding:7pxm4px;
-    border-bottom:1px solid rgba(181,138, 69, 0.18);
-}
-
-.calendar-event strong {
-    min-width:65px;
-}
-
-.calendar-event span {
-    opacity:0.85;
-}
-
 .desktop-widgets {
     position:absolute;
     inset:0;
@@ -1444,15 +1430,17 @@ animation:sparkleFade 0.7s ease-out forwards;
 .desktop-widget:active{
     cursor:grabbing;
 }
-.clock-widget{
+.clock-widget,.weather-widget,.events-widget{
     left:auto;
     background:transparent;
     border:none;
     box-shadow:none;
     padding:none;
-    right:30px;
-    top:80px;
+
 }
+.clock-widget{
+    right:30px;
+    top:80px;}
 .analogue-clock{
     position:relative;
     width:180px;
@@ -1492,11 +1480,7 @@ animation:sparkleFade 0.7s ease-out forwards;
 }
 
 .weather-widget {
-    left:auto;
-    background:transparent;
-    border:none;
-    box-shadow:none;
-    padding:0;
+    
     right:30px;
     top:280px;
 }
@@ -1527,11 +1511,6 @@ animation:sparkleFade 0.7s ease-out forwards;
 }
 
 .events-widget{
-    left:auto;
-    background:transparent;
-    border:none;
-    box-shadow:none;
-    padding:0;
     right:200px;
     top:80px;
 }
@@ -1579,7 +1558,7 @@ animation:sparkleFade 0.7s ease-out forwards;
 .star{
     position:absolute;
     object-fit:contain;
-    opacity:0.55;
+    opacity:0.5;
     pointer-events:none;
     filter:drop-shadow(0 0 5px rgba(255,170,70,0.5));
 }
@@ -1609,7 +1588,7 @@ animation:sparkleFade 0.7s ease-out forwards;
     z-index:10;
 }
 .plant:hover img,.lily:hover img, .flower:hover img{
-    transform:scale(1.05);
+    transform:scale(1);
     filter:drop-shadow(0 0 8px rgba(181,138,69,0.5));
 }
 
@@ -1635,14 +1614,14 @@ animation:sparkleFade 0.7s ease-out forwards;
         left:30%;
         bottom:45px;
         transform:translate(0, 0) rotate(0deg);
-        opacity:1;
+        
     }
 
     to {
         left:110%;
         bottom:500px;
         transform:translate(0, 0) rotate(8deg);
-        opacity:1;
+        
     }
 }
 
@@ -1657,16 +1636,18 @@ animation:sparkleFade 0.7s ease-out forwards;
         left:30%;
         bottom:35px;
         transform:translate(0,0) rotate(0deg);
-        opacity:1;
+        
     }
     to{
         left:110%;
         bottom:500px;
         transform:translate(0,0) rotate(8deg);
-        opacity:1;
+        
     }
 }
-.dark-mode .plant, .dark-mode .lily, .dark-mode .butterfly,.dark-mode .flower{display:none !important;}
+
+.dark-mode .plant, .dark-mode .lily, .dark-mode .butterfly,.dark-mode .flower,.dark-mode .elvenleaf{display:none !important;}
+
 .ring {
     position:absolute;
     left:90%;
@@ -1678,7 +1659,7 @@ animation:sparkleFade 0.7s ease-out forwards;
 #gollum{
     position:fixed;
     bottom:50px;
-    left:0%;
+    left:0;
     width:90px;
     z-index:10;
     display:none;
@@ -1688,18 +1669,17 @@ animation:sparkleFade 0.7s ease-out forwards;
     width:100%;
 }
 #gollum:hover img{
-    transform:scale(1.05);
+    transform:scale(1);
 }
 
 .ring>img:first-child{
     width:70px;
     display:block;
-    transition:filter 0.25s ease,transform
-0.25s ease;
+    transition:filter 0.25s ease,transform 0.25s ease;
 }
 
 .ring:hover>img:first-child{
-    transform:scale(1.08);
+    transform:scale(1);
     filter:
         drop-shadow(0 0 5px #ffd76a)
         drop-shadow(0 0 12px #ff9d00);
@@ -1714,7 +1694,6 @@ animation:sparkleFade 0.7s ease-out forwards;
     display:none;
     pointer-events:none;
 }
-
 
 
 .legolas,
@@ -1753,7 +1732,7 @@ animation:sparkleFade 0.7s ease-out forwards;
 
 .legolas-fly{
     display:block;
-    top:35%;
+    top:45%;
     left:-200px;
     animation:legolasFly 2s linear forwards;
 }

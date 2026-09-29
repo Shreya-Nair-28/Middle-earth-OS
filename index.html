@@ -31,7 +31,9 @@
     <div class="desktop">
         <div class="header-space"></div>
 
-       
+        <video id="darkbg" autoplay muted loop playsinline>
+            <source src="videos/darkbg.mp4" type="video/mp4">
+        </video>
         
         <div class="mode-toggle">
             <span id="modeLabel">☀️ Light Mode</span>
@@ -46,6 +48,10 @@
             <img src="images/elvenleaf.png" id="elvenleaf" alt="Elven Leaf">
         </div>
         <img src="images/leaves.gif" id="leaves">
+        <div class="fire" onclick="showfire()">
+            <img src="images/fire.png" id="fire" alt="Fire icon";>
+        </div>
+        <img src="images/fire.gif" id="fires">
 
         <div class="icons">
             <div class="icon" onclick="openWindow('introWindow')">
@@ -360,7 +366,7 @@
             </div>
             <div class="window" id="readerWindow">
                 <div class="window-bar">
-                    <span id="readerTitle">📖Book Reader</span>
+                    <span id="readerTitle">Book Reader</span>
                     <div class="window-controls">
                         <button onclick="minimizeWindow('readerWindow')"title="Minimize">
                             -
@@ -377,23 +383,21 @@
                     <h2 id="readerHeading">Book</h2>
                     <p id="readerText">Select a book from the library.</p>
                     <button id="excerptButton" onclick="openExcerpt()">
-                        📖Read an Excerpt
+                        Read an Excerpt!
                     </button>
                     <iframe
                     id="excerptViewer"
                     src=""
                     title="Book excerpt"
                     style="display:none;width:100%;height:350px;border:2px solid #8b6f3d;">
-
                     </iframe>
-                    <canvas id="pdfCanvas" style="display:none;"></canvas>
                 </div>
             </div>
         </div>
 
         <div class="window" id="galleryWindow">
             <div class="window-bar">
-                <span>📷 Gallery </span>
+                <span>Gallery </span>
                 <div class="window-controls">
                     <button onclick="minimizeWindow('galleryWindow')" title="Minimize">
                         -
@@ -613,7 +617,7 @@
                 <div class="wallpaper-picker">
                     <button onclick="previousWallpaper()">◀️</button>
 
-                    <div class="wallpaper-preview" onclick="chooseCurrentWallpaper()">
+                    <div class="wallpaper-preview" onclick="wallpaperChoose()">
                         <img id="wallpaperThumbnail"
                              src="images/background.jpg"
                              alt="Wallpaper preview">

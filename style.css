@@ -900,13 +900,23 @@ textarea{
     background:#f4f0df;
     transition:0.3s ease;
 }
+#darkbg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    inset:0;
+    object-fit:cover;
+    display:none;
+    z-index:0;
+    pointer-events:none;
+}
 body.dark-mode #darkModeToggle{
     background:#6b6847;
 }
 body.dark-mode .toggle-knob{
     transform:translateX(22px);
 }
-body.dark-mode .desktop{background-image:url("images/darkbg.gif");}
+body.dark-mode #darkbg{display:block;}
 
 body.dark-mode .window{
     background:rgba(20,29,23,0.97);
@@ -1706,7 +1716,7 @@ animation:sparkleFade 0.7s ease-out forwards;
 .treasure{
     position:fixed;
     bottom:100px;
-    right:40%;
+    right:80%;
     width:110px;
     z-index:20;
     display:none;

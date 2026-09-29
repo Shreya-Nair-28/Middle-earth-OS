@@ -30,6 +30,7 @@ function darkmode(){
         label.textContent="🌙Dark Mode";
         settingsButton.textContent="☀️Light Mode";
         document.getElementById("gollum").style.display="block";
+        document.querySelector('.fire').style.display="block";
         showMoth();
         stars();
     }else{
@@ -37,31 +38,32 @@ function darkmode(){
         settingsButton.textContent="🌙Dark Mode";
         document.getElementById("gollum").style.display="none";
         moth.style.display="none";
+        document.querySelector('.fire').style.display="none";
         document.getElementById("star").innerHTML="";
     }
-    updateBackgroundMusic();
-    backgroundMusic.play().catch(function(){console.log("Music waiting");});
+    updateBgMusic();
+    bgMusic.play().catch(function(){console.log("Music waiting");});
 }
 
 //this function changes bg music depending on light or dark mode
-const backgroundMusic=document.getElementById("backgroundMusic");
-updateBackgroundMusic();
-function updateBackgroundMusic(){
+const bgMusic=document.getElementById("bgMusic");
+updateBgMusic();
+function updateBgMusic(){
     if(document.body.classList.contains("dark-mode")){
-        backgroundMusic.src="audio/darkmusic.mp3";
+        bgMusic.src="audio/darkmusic.mp3";
     }else{
-        backgroundMusic.src="audio/lightmusic.mp3";
+        bgMusic.src="audio/lightmusic.mp3";
     }
-    backgroundMusic.loop=true;
+    bgMusic.loop=true;
 
 }
 document.getElementById("startIntro").addEventListener("click",function(){
-    backgroundMusic.play().catch(function(){
+    bgMusic.play().catch(function(){
         console.log("Music didnt play");
     });
 });
 document.getElementById("skipIntro").addEventListener("click",function(){
-    backgroundMusic.play().catch(function(){
+    bgMusic.play().catch(function(){
         console.log("music didnt play");
     });
 });
@@ -71,36 +73,18 @@ const musicmute=document.getElementById("musicmute");
 if(musicmute){
     musicmute.addEventListener("change",function(){
         if(this.checked){
-            backgroundMusic.muted=true;
+            bgMusic.muted=true;
         }
         else{
-            backgroundMusic.muted=false;
-            backgroundMusic.play().catch(function(){
+            bgMusic.muted=false;
+            bgMusic.play().catch(function(){
                 console.log("Music not played yet");
             });
         }
     });
 }
 //to change wallpaper
-function changeWallpaper(){
-    const wallpaper=document.getElementById("wallpaperSelect");
-    if(wallpaper.value==="dark"){
-        document.querySelector(".desktop").style.backgroundImage='url("images/darkbg.gif")';
-    }else{
-        document.querySelector(".desktop").style.backgroundImage= 'url("images/background.jpg")';
-    }
-}
-//to choose wallpaper from options
-function chooseWallpaper(type){
-    const desktop=document.querySelector(".desktop");
 
-    if(type==="dark"){
-        desktop.style.backgroundImage='url("images/darkbg.gif")';
-    }
-    else{
-        desktop.style.backgroundImage='url("images/background.jpg")';
-    }
-}
 
 let memoryData=JSON.parse(localStorage.getItem("memory"))||{
     apps:[], secrets:[]
@@ -474,7 +458,7 @@ function previousWallpaper(){
     }
     updateWallpaperThumbnail();
 }
-function chooseCurrentWallpaper(){
+function wallpaperChoose(){
     document.querySelector(".desktop").style.backgroundImage= `url("${wallpapers[currentWallpaper]}")`;
 }
 
@@ -1142,7 +1126,7 @@ function openBook(book){
         unfinished:{
             title:"Unfinished Tales of Numenor and Middle-Earth",
             text:"A collection of stories and writings by J.R.R. Tolkien the GOAT",
-            pdf:"unfinished.pdf"
+            pdf:"books/unfinished.pdf"
         }
     };
     const selectedBook=books[book];
@@ -1160,12 +1144,6 @@ function openExcerpt(){
     viewer.src=currentExcerpt;
     viewer.style.display="block";
 }
-const pdfCanvas=document.getElementById("pdfCanvas");
-const pdfCtx=pdfCanvas.getContext("2d");
-let pdfDocument=null;
-let currentPdfPage=1;
-
-
 
 
 document.querySelectorAll(".window").forEach(function(win) {
@@ -1479,6 +1457,15 @@ function elvenleaf(){
         leaves.style.display="none";
     },4000);
 }
+function showfire(){
+    const fires=document.getElementById("fires");
+    fires.src="images/fire.gif?time="+Date.now();
+    fires.style.display="block";
+    setTimeout(function(){
+        fires.style.display="none";
+    },4000);
+}
+
 function showRing(){
     const ringGif=document.getElementById("ringGif");
     rmbSecret("The One Ring");
@@ -1520,6 +1507,7 @@ setTimeout(function(){
     showTreasure();
 
 },120000);
+
 function showLegolas(){
     const legolas=document.querySelector(".legolas");
     legolas.classList.remove("legolas-fly");

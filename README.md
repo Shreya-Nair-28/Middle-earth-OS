@@ -2,14 +2,14 @@
 
 ![demo](images/demo.png)
 
-Wanderlust OS is my Middle-earth-themed web OS project. I'm a huge fan of the Lord of the Rings universe and I wanted to make something that felt like a little world of its own and giving the user an immersive experience. Of course, people who have no idea about lord of the rings can use it tooo!! I would appreciate all feedback and would like to improve the experience as much as possible for anyone who comes across the site.
+Wanderlust OS is my Middle-earth themed web OS project. I'm a huge fan of the Lord of the Rings universe and I wanted to make something that felt like a little world of its own and giving the user an immersive experience. Of course, people who have no idea about lord of the rings can use it tooo!! I would appreciate all feedback and would like to improve the experience as much as possible for anyone who comes across the site.
 
 ## The idea
 
 I started with the basic idea of making a web desktop where different apps could open in their own windows also with draggable and resizable windows. I basically focused on functionality first (this was Ship #1).
 From there, I slowly added more things to make it feel like an actual operating system: a more proper taskbar, nicer app icons, settings, a custom cursor, different modes (light and dark), animations, and eventually lots of little hidden details.
 The project changed quite a bit while I was making it. I originally focused on getting the basic apps working, and then gradually started adding more of the Middle-earth theme around them. You can see the evolution of my website through my devlogs here: https://stardance.hackclub.com/projects/58676
-I'm surprised how far I've come as well 😅.
+I'm surprised how far I've come as well o(*￣▽￣*)ブ.
 
 
 ## The apps
@@ -24,7 +24,7 @@ The main apps (includes the intro window) I built are:
 - **Timer** — a countdown timer.You can choose the number of minutes and seconds and a small gif plays when the timer is running.
 - **Map** — an interactive map of Middle-earth with clickable locations. On clicking the pins on the map, you can get some information about that place.
 ![apps](images/ss_apps2.png)
-- **Palantír** — searches for a location and shows its current weather with some special effects. I thought a crystal ball would be cool because it usually predicts an event so I felt like it would be a great addition for my OS.
+- **Palantír** — searches for a location and shows its current weather with some special effects. I thought a crystal ball would be cool because it usually predicts an event so I felt like it would be a great addition for my OS. You can edit the location by right clicking it.
 ![apps](images/ss_apps3.png)
 - **Calendar** — lets you browse through months and select dates and add events.
 - **Doodle** — a little drawing app with eraser, colour picker and size changer.
@@ -45,7 +45,7 @@ I built the WebOS using the following:
 
 I built the project gradually rather than trying to make everything at once.
 
-First I focused on getting the desktop and windows working. Then I worked on the individual apps. Once the basic functionality was there, I started adding the visual details — borders, parchment, ancient-vibe colours, animations and lotr-inspired elements.
+First I focused on getting the desktop and windows working. Then I worked on the individual apps. Once the basic functionality was there, I started adding the visual details like borders, parchment, ancient-vibe colours, animations and lotr-inspired elements.
 
 One of the things I spent a lot of time on was making the windows feel more like an actual desktop. They can be dragged around, resized, minimized, maximized and brought to the front when selected.
 I also added a taskbar that shows which apps are open and which one is currently active.
@@ -55,7 +55,6 @@ Other features that make the OS more alive are the dragon and the arrow. Both fl
 ![Dragon](images/ss_dragon.png)
 
 ## Light Mode
-
 
 The light mode is the opening mode of the OS. It has some happy music playing in the bg (Concerning Hobbits theme from the movie).
 
@@ -83,7 +82,6 @@ I also introduced things like:
 - Arkenstone
 
 The stars also react when the cursor gets close to them, which was one of the small interactions I added to make the desktop feel more alive (I had added something like this in my personal site mission I kinda customized it for this OS as well).
-
 Some of these appear automatically while others require clicking or interacting with different parts of the desktop.
 
 
@@ -100,6 +98,8 @@ This uses `localStorage`, so the progress can stay saved in the browser instead 
 I added it as a way for the user to know how many easter eggs they had found out.
 
 ## The design process
+
+AI usage: I used ChatGPT for debugging when I couldn't find the error myself or through a video or website. The coding was learnt through youtube (mostly for HTML and CSS since I was more familiar with JS from school) and done by me.
 
 For the visual style, I wanted something simple to use yet very visually appealing. I didn't make something only lotr fans can use. Only the theme and some app names are inspired by the fantasy world. The apps are all familiar and easy to use but with a little touch of some magic. ╰(*°▽°*)╯
 

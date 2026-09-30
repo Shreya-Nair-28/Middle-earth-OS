@@ -188,9 +188,7 @@ function restoreWindow(id) {
     activeappsbar(id);
 }
 
-
 const opensound=new Audio("audio/window.mp3");
-const closesound=new Audio("audio/close.mp3");
 
 function openWindow(id) {
     const windowElement=document.getElementById(id);
@@ -224,8 +222,6 @@ function closeWindow(id) {
     const window=document.getElementById(id);
 
     window.classList.add("closing");
-    closesound.currentTime=0;
-    closesound.play();
     forTaskbar(id,false);
     activeappsbar(null);
     setTimeout(function(){
@@ -1534,9 +1530,6 @@ function showDragon(){
 
 setInterval(function(){
     const random=Math.floor(Math.random()*3);
-    if(random===0){
-        showGandalf();
-    }
 
     if(random===1){
         showLegolas();

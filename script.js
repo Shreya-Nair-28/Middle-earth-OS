@@ -1550,10 +1550,10 @@ function growPlant(){
     plantImage.style.display="none";
     plantGif.style.display="block";
     setTimeout(function(){
-        plantGif.style.display="none";
-        plantImage.style.display="block";
         plantImage.src="images/plantfinal.png";
-    },2000);
+        plantImage.style.display="block";
+        plantGif.style.display="none";
+    },1800);
 }
 
 function growLily(){
@@ -1563,10 +1563,11 @@ function growLily(){
     lilyImage.style.display="none";
     lilyGif.style.display="block";
     setTimeout(function(){
-        lilyGif.style.display="none";
-        lilyImage.style.display="block";
         lilyImage.src="images/lilyfinal.png";
-    },7800);
+        lilyImage.style.display="block";
+        lilyGif.style.display="none";
+        
+    },7000);
 }
 
 function growFlower(){
@@ -1576,10 +1577,11 @@ function growFlower(){
     flowerImage.style.display="none";
     flowerGif.style.display="block";
     setTimeout(function(){
-        flowerGif.style.display="none";
-        flowerImage.style.display="block";
         flowerImage.src="images/flowerfinal.png";
-    },4500);
+        flowerImage.style.display="block";
+        flowerGif.style.display="none";
+        
+    },4000);
 }
 
 const butterfly=document.getElementById("butterfly");

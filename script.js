@@ -1553,7 +1553,7 @@ function growPlant(){
         plantGif.style.display="none";
         plantImage.style.display="block";
         plantImage.src="images/plantfinal.png";
-    },1800);
+    },2000);
 }
 
 function growLily(){
@@ -1566,7 +1566,7 @@ function growLily(){
         lilyGif.style.display="none";
         lilyImage.style.display="block";
         lilyImage.src="images/lilyfinal.png";
-    },7000);
+    },7800);
 }
 
 function growFlower(){
@@ -1579,7 +1579,7 @@ function growFlower(){
         flowerGif.style.display="none";
         flowerImage.style.display="block";
         flowerImage.src="images/flowerfinal.png";
-    },4000);
+    },4500);
 }
 
 const butterfly=document.getElementById("butterfly");

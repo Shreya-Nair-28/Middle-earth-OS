@@ -113,21 +113,21 @@ A lot of the design came from experimenting and changing things when they didn't
 
 ## Credits
 
--dragon flying gif: https://tr.pinterest.com/pin/835980749618854694/
--arrow: https://png.pngtree.com/png-clipart/20240701/original/pngtree-old-arrows-png-image_15461105.png
--cursor: https://sweezy-cursors.com/tags/lotr/
--ring: https://upload.wikimedia.org/wikipedia/commons/d/d4/One_Ring_Blender_Render.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original
--Gollum: https://static.wikia.nocookie.net/villainous-benchmark/images/4/48/GollumAUJTextlessPoster.webp/revision/latest?cb=20220926201914
--Flower1:https://i.pinimg.com/originals/57/95/d3/5795d3a6a1e3ad4f80fce24074f350ab.gif
--Flower2:https://i.pinimg.com/originals/05/8d/70/058d707c3bbc9472f7104c3cb6714d77.gif
--Flower3: https://tenor.com/en-GB/view/flowers-flower-growth-gardening-garden-gif-24244565
--Map: https://www.printables.com/model/603163-map-of-middle-earth-hueforge
--smoke: https://i.pinimg.com/originals/7c/6f/a2/7c6fa263e000ae7d2a5c7550b215ffc3.gif
--fire:https://i10.glitter-graphics.org/pub/729/729470quxqp5d7da.gif
--treasure:https://cdn.dribbble.com/userupload/41847526/file/original-2635a670b5da92819be8b638cdb82c27.gif
--leaves: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8g0zRH3cse12eGzVtLIo55lLJtBrn91ghIQzKS6tSSQ&s=10
--wallpapers: Stills from the actual movie
-Everything else: Canva
+- dragon flying gif: https://tr.pinterest.com/pin/835980749618854694/
+- arrow: https://png.pngtree.com/png-clipart/20240701/original/pngtree-old-arrows-png-image_15461105.png
+- cursor: https://sweezy-cursors.com/tags/lotr/
+- ring: https://upload.wikimedia.org/wikipedia/commons/d/d4/One_Ring_Blender_Render.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original
+- Gollum: https://static.wikia.nocookie.net/villainous-benchmark/images/4/48/GollumAUJTextlessPoster.webp/revision/latest?cb=20220926201914
+- Flower1:https://i.pinimg.com/originals/57/95/d3/5795d3a6a1e3ad4f80fce24074f350ab.gif
+- Flower2:https://i.pinimg.com/originals/05/8d/70/058d707c3bbc9472f7104c3cb6714d77.gif
+- Flower3: https://tenor.com/en-GB/view/flowers-flower-growth-gardening-garden-gif-24244565
+- Map: https://www.printables.com/model/603163-map-of-middle-earth-hueforge
+- smoke: https://i.pinimg.com/originals/7c/6f/a2/7c6fa263e000ae7d2a5c7550b215ffc3.gif
+- fire:https://i10.glitter-graphics.org/pub/729/729470quxqp5d7da.gif
+- treasure:https://cdn.dribbble.com/userupload/41847526/file/original-2635a670b5da92819be8b638cdb82c27.gif
+- leaves: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8g0zRH3cse12eGzVtLIo55lLJtBrn91ghIQzKS6tSSQ&s=10
+- wallpapers: Stills from the actual movie
+- Everything else: Canva
 
 I followed a lot of tutorials from youtube and websites. Initially I went through a few amazing projects published to the WebOS mission on the Stardance Challenge to take some inspo but realised I wanted to create something that felt more like me. And I have!! I have come a long way from being an intermediate in JS (some school-level knowledge) and a complete beginner in HTML and CSS to being able to work on smth myself that's unique. 
 

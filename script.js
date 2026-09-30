@@ -1547,24 +1547,38 @@ setInterval(function(){
 function growPlant(){
     rmbSecret("Plant");
     const plantImage=document.getElementById("plantImage");
-    plantImage.src="images/plant.gif";
+    const plantGif=document.getElementById("plantGif");
+    plantImage.style.display="none";
+    plantGif.style.display="block";
     setTimeout(function(){
+        plantGif.style.display="none";
+        plantImage.style.display="block";
         plantImage.src="images/plantfinal.png";
     },1800);
 }
+
 function growLily(){
     rmbSecret("Lily");
     const lilyImage=document.getElementById("lilyImage");
-    lilyImage.src="images/lily.gif";
+    const lilyGif=document.getElementById("lilyGif");
+    lilyImage.style.display="none";
+    lilyGif.style.display="block";
     setTimeout(function(){
+        lilyGif.style.display="none";
+        lilyImage.style.display="block";
         lilyImage.src="images/lilyfinal.png";
     },7000);
 }
+
 function growFlower(){
     rmbSecret("Flower");
     const flowerImage=document.getElementById("flowerImage");
-    flowerImage.src="images/flower.gif";
+    const flowerGif=document.getElementById("flowerGif");
+    flowerImage.style.display="none";
+    flowerGif.style.display="block";
     setTimeout(function(){
+        flowerGif.style.display="none";
+        flowerImage.style.display="block";
         flowerImage.src="images/flowerfinal.png";
     },4000);
 }

@@ -1543,26 +1543,41 @@ setInterval(function(){
 function growPlant(){
     rmbSecret("Plant");
     const plantImage=document.getElementById("plantImage");
-    plantImage.src="images/plant.gif";
-    setTimeout(function(){
-        plantImage.src="images/plantfinal.png";
-    },1800);
+    const gif=new Image();
+    gif.onload=function(){
+        plantImage.src="images/plant.gif?time="+Date.now();
+        setTimeout(function(){
+            plantImage.src="images/plantfinal.png";
+        },1800);
+    };
+    gif.src="images/plant.gif?time="+Date.now();
 }
+
 function growLily(){
     rmbSecret("Lily");
     const lilyImage=document.getElementById("lilyImage");
-    lilyImage.src="images/lily.gif";
-    setTimeout(function(){
-        lilyImage.src="images/lilyfinal.png";
-    },7000);
+    const gif=new Image();
+    gif.onload=function(){
+        lilyImage.src="images/lily.gif?time="+Date.now();
+        setTimeout(function(){
+            lilyImage.src="images/lilyfinal.png";
+        },7000);
+    };
+    gif.src="images/lily.gif?time="+Date.now();
 }
+
 function growFlower(){
     rmbSecret("Flower");
     const flowerImage=document.getElementById("flowerImage");
-    flowerImage.src="images/flower.gif";
-    setTimeout(function(){
-        flowerImage.src="images/flowerfinal.png";
-    },4000);
+    const gif=new Image();
+    gif.onload=function(){
+        flowerImage.src="images/flower.gif?time="+Date.now();
+
+        setTimeout(function(){
+            flowerImage.src="images/flowerfinal.png";
+        },4000);
+    };
+    gif.src="images/flower.gif?time="+Date.now();
 }
 
 const butterfly=document.getElementById("butterfly");

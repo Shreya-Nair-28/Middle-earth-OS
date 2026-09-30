@@ -1279,7 +1279,6 @@ function showMapLocation(location){
         minastirith:{
             name:"Minas Tirith",
             description:"Known as the White City, it is the magnificent capital city and chief stronghold of the realm of Gondor. It is the main place of war during the final defense against the armies of Mordor."
-"
         },
         rohan:{
             name:"Rohan",

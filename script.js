@@ -1,4 +1,7 @@
-
+//added code to load gifs before itself
+new Image().src="images/plant.gif";
+new Image().src="images/lily.gif";
+new Image().src="images/flower.gif";
 //introvideo function
 const introcover=document.getElementById("introcover");
 const introVideo=document.getElementById("introVideo");
@@ -1543,41 +1546,26 @@ setInterval(function(){
 function growPlant(){
     rmbSecret("Plant");
     const plantImage=document.getElementById("plantImage");
-    const gif=new Image();
-    gif.onload=function(){
-        plantImage.src="images/plant.gif?time="+Date.now();
-        setTimeout(function(){
-            plantImage.src="images/plantfinal.png";
-        },1800);
-    };
-    gif.src="images/plant.gif?time="+Date.now();
+    plantImage.src="images/plant.gif";
+    setTimeout(function(){
+        plantImage.src="images/plantfinal.png";
+    },1800);
 }
-
 function growLily(){
     rmbSecret("Lily");
     const lilyImage=document.getElementById("lilyImage");
-    const gif=new Image();
-    gif.onload=function(){
-        lilyImage.src="images/lily.gif?time="+Date.now();
-        setTimeout(function(){
-            lilyImage.src="images/lilyfinal.png";
-        },7000);
-    };
-    gif.src="images/lily.gif?time="+Date.now();
+    lilyImage.src="images/lily.gif";
+    setTimeout(function(){
+        lilyImage.src="images/lilyfinal.png";
+    },7000);
 }
-
 function growFlower(){
     rmbSecret("Flower");
     const flowerImage=document.getElementById("flowerImage");
-    const gif=new Image();
-    gif.onload=function(){
-        flowerImage.src="images/flower.gif?time="+Date.now();
-
-        setTimeout(function(){
-            flowerImage.src="images/flowerfinal.png";
-        },4000);
-    };
-    gif.src="images/flower.gif?time="+Date.now();
+    flowerImage.src="images/flower.gif";
+    setTimeout(function(){
+        flowerImage.src="images/flowerfinal.png";
+    },4000);
 }
 
 const butterfly=document.getElementById("butterfly");

@@ -1579,6 +1579,12 @@ animation:sparkleFade 0.7s ease-out forwards;
     cursor:pointer;
     z-index:8;
 }
+
+#plantGif,
+#lilyGif,
+#flowerGif{
+    display:none;
+}
 .plant{
     left:80%;
     top:75%;

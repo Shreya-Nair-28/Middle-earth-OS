@@ -1270,31 +1270,32 @@ function showMapLocation(location){
         },
         rivendell:{
             name:"Rivendell",
-            description:"Land of the Elves"
+            description:"Also called Imladris, it is a hidden Elven sanctuary nestled in a deep river valley at the edge of the Misty Mountains. Ruled by the wise half-elven lord Elrond, it is a peaceful haven of learning, music, and healing. It was the site where the Fellowship of the Ring is formed."
         },
         moria:{
             name:"Moria",
-            description:"Beneath the Misty Mountains"
+            description:"Also known as Khazad-dûm, it is a vast, ancient underground kingdom of the Dwarves carved deep beneath the Misty Mountains. It was once rich with mithril (a rare, strong metal), but it fell into ruin after the dwarves accidentally awakened a fiery demon known as a Balrog. By the time of the War of the Ring, it is dark, abandoned, and filled with orcs and goblins."
         },
         minastirith:{
             name:"Minas Tirith",
-            description:"The White City of Gondor is its capital"
+            description:"Known as the White City, it is the magnificent capital city and chief stronghold of the realm of Gondor. It is the main place of war during the final defense against the armies of Mordor.
+"
         },
         rohan:{
             name:"Rohan",
-            description:"The land of the Rohirrim"
+            description:"The land of the Rohirrim: The people here (the Rohirrim) are legendary horse-masters who live in wooden halls and love nothing more than a good cavalry charge."
         },
         gondor:{
             name:"Gondor",
-            description:"Kingdom of Men"
+            description:"Kingdom of Men founded by survivors of the sunken island of Númenor."
         },
         mordor:{
             name:"Mordor",
-            description:"The dark lands"
+            description:"It is the dark lands in the east of Middle-earth ruled by the Dark Lord Sauron. Surrounded on three sides by mountain ranges, the region is poisoned by the fires of Mount Doom. It is the heart of evil power and has the great dark tower of Barad-dûr."
         },
         isengard:{
             name:"Isengard",
-            description:"Fortified circular valley and fortress"
+            description:"It is a circular valley fortress located at the southern end of the Misty Mountains centered around the indestructible black tower of Orthanc. Once a place belonging to Gondor, it was handed over to the wizard Saruman."
         }
 
     };
